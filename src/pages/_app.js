@@ -1,4 +1,5 @@
 import { MainLayout } from '@/components/main-layout';
+import { apikey } from '@/config/apikey';
 import '@/styles/globals.css'
 import Head from 'next/head';
 
@@ -21,34 +22,34 @@ export default function App({ Component, pageProps, data }) {
 App.getInitialProps = async ({ Component, ctx }) => {
 
   const trendDay = await fetch(
-    "https://api.themoviedb.org/3/trending/all/day?api_key=8a2782e79632aea9f11727ccc210744f"
+    `https://api.themoviedb.org/3/trending/all/day?api_key=${apikey}`
   ).then(res => res.json());
   const trendWeek = await fetch(
-    "https://api.themoviedb.org/3/trending/all/week?api_key=8a2782e79632aea9f11727ccc210744f"
+    `https://api.themoviedb.org/3/trending/all/week?api_key=${apikey}`
   ).then(res => res.json());
   const moviesNowPlaying = await fetch(
-    "https://api.themoviedb.org/3/movie/now_playing?api_key=8a2782e79632aea9f11727ccc210744f&language=en-US&page=1"
+    `https://api.themoviedb.org/3/movie/now_playing?api_key=${apikey}&language=en-US&page=1`
   ).then(res => res.json());
   const moviesPopular = await fetch(
-    "https://api.themoviedb.org/3/movie/popular?api_key=8a2782e79632aea9f11727ccc210744f&language=en-US&page=1"
+    `https://api.themoviedb.org/3/movie/popular?api_key=${apikey}&language=en-US&page=1`
   ).then(res => res.json());
   const moviesTopRated = await fetch(
-    "https://api.themoviedb.org/3/movie/top_rated?api_key=8a2782e79632aea9f11727ccc210744f&language=en-US&page=1"
+    `https://api.themoviedb.org/3/movie/top_rated?api_key=${apikey}&language=en-US&page=1`
   ).then(res => res.json());
   const moviesUpcoming = await fetch(
-    "https://api.themoviedb.org/3/movie/upcoming?api_key=8a2782e79632aea9f11727ccc210744f&language=en-US&page=1"
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${apikey}&language=en-US&page=1`
   ).then(res => res.json());
   const tvPopular = await fetch(
-    "https://api.themoviedb.org/3/tv/popular?api_key=8a2782e79632aea9f11727ccc210744f&language=en-US&page=1"
+    `https://api.themoviedb.org/3/tv/popular?api_key=${apikey}&language=en-US&page=1`
   ).then(res => res.json());
   const tvTopRated = await fetch(
-    "https://api.themoviedb.org/3/tv/top_rated?api_key=8a2782e79632aea9f11727ccc210744f&language=en-US&page=1"
+    `https://api.themoviedb.org/3/tv/top_rated?api_key=${apikey}&language=en-US&page=1`
   ).then(res => res.json());
   const tvOnTheAir = await fetch(
-    "https://api.themoviedb.org/3/tv/on_the_air?api_key=8a2782e79632aea9f11727ccc210744f&language=en-US&page=1"
+    `https://api.themoviedb.org/3/tv/on_the_air?api_key=${apikey}&language=en-US&page=1`
   ).then(res => res.json());
   const tvAiringToday = await fetch(
-    "https://api.themoviedb.org/3/tv/airing_today?api_key=8a2782e79632aea9f11727ccc210744f&language=en-US&page=1"
+    `https://api.themoviedb.org/3/tv/airing_today?api_key=${apikey}&language=en-US&page=1`
   ).then(res => res.json());
 
   //movies

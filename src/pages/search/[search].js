@@ -1,4 +1,5 @@
 import { Card } from "@/components/card";
+import { apikey } from "@/config/apikey";
 import React from "react";
 
 export default function Search({ searchResult }) {
@@ -24,7 +25,7 @@ export async function getServerSideProps(context) {
   console.log(context.query);
   const query = context?.query.search;
   const searchResult = await fetch(
-    `https://api.themoviedb.org/3/search/multi?query=${query}&api_key=8a2782e79632aea9f11727ccc210744f`
+    `https://api.themoviedb.org/3/search/multi?query=${query}&api_key=${apikey}`
   ).then((res) => res.json());
   return {
     props: {
