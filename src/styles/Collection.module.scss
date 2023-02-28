@@ -1,0 +1,101 @@
+.collection {
+  padding: 0 0.25rem;
+  margin: 0 0 1rem 1rem;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.collection::-webkit-scrollbar {
+  height: 6px;
+}
+
+.collection::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 1px var(--clr-primary);
+  border-radius: var(--radius);
+}
+
+.collection::-webkit-scrollbar-thumb {
+  background-color: var(--clr-primary);
+  border-radius: var(--radius);
+  -webkit-box-shadow: inset 0 0 1px var(--clr-primary);
+}
+
+.collection_type {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.5rem;
+  margin-left: 1rem;
+}
+
+.switchButton {
+  background: rgba(255, 255, 255, 0.56);
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: 10rem;
+  text-align: center;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: #155FFF;
+  position: relative;
+  padding-right: 5rem;
+  position: relative;
+  margin-left: 0.5rem;
+
+  &:before {
+    content: "Week";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  &Checkbox {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
+
+    &:checked + .switchButtonLabel:before {
+      transform: translateX(5rem);
+      transition: transform 300ms linear;
+    }
+
+    & + .switchButtonLabel {
+      position: relative;
+      padding: 0.5rem 0;
+      display: block;
+      user-select: none;
+      pointer-events: none;
+
+      &:before {
+        content: "";
+        background: #fff;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: var(--radius);
+        transform: translateX(0);
+        transition: transform 300ms;
+      }
+
+      .switchButtonLabelSpan {
+        position: relative;
+      }
+    }
+  }
+}
