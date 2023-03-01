@@ -3,12 +3,12 @@ import Image from "next/image";
 import styles from "@/styles/Card.module.css";
 import Link from "next/link";
 
-export const Card = ({ item, rec, linkPath }) => {
+export const Card = ({ item, rec,}) => {
   const divStyle = {
     borderRadius: "16px",
   };
   const imagePath = `https://image.tmdb.org/t/p/original/${item.poster_path}`;
-  // let linkPath = `/${item.media ||item.media_type}/${item.id}`
+  let linkPath = `/${item.media || item.media_type}/${item.id}`
 
   return (
     <article className={styles.card}>

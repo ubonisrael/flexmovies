@@ -6,6 +6,12 @@
   overflow-y: hidden;
 }
 
+.links {
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--clr-primary);
+}
+
 .collection::-webkit-scrollbar {
   height: 6px;
 }
@@ -33,13 +39,13 @@
   background: rgba(255, 255, 255, 0.56);
   border-radius: var(--radius);
   overflow: hidden;
-  width: 10rem;
+  width: 5rem;
   text-align: center;
-  font-size: 1rem;
-  letter-spacing: 1px;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
   color: #155FFF;
   position: relative;
-  padding-right: 5rem;
+  padding-right: 2.5rem;
   position: relative;
   margin-left: 0.5rem;
 
@@ -49,7 +55,7 @@
     top: 0;
     bottom: 0;
     right: 0;
-    width: 5rem;
+    width: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,13 +75,13 @@
     z-index: 2;
 
     &:checked + .switchButtonLabel:before {
-      transform: translateX(5rem);
+      transform: translateX(2.5rem);
       transition: transform 300ms linear;
     }
 
     & + .switchButtonLabel {
       position: relative;
-      padding: 0.5rem 0;
+      padding: 0.25rem 0;
       display: block;
       user-select: none;
       pointer-events: none;
@@ -95,6 +101,24 @@
 
       .switchButtonLabelSpan {
         position: relative;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .switchButton {
+    width: 10rem;
+    font-size: 1rem;
+    padding-right: 5rem;
+  
+    &:before {
+      width: 5rem;
+    }
+  
+    &Checkbox {
+      &:checked + .switchButtonLabel:before {
+        transform: translateX(5rem);
       }
     }
   }

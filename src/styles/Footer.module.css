@@ -4,4 +4,5 @@
     display: grid;
     place-items: center;
     box-shadow: var(--light-shadow);
+    margin-top: 1rem;
 }

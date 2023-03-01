@@ -14,11 +14,10 @@ export const Navbar = () => {
     if (!query) {
       return
     } else {
-      router.push(`/search/${query.trim()}`)
-      // router.push({
-      //   pathname: `/search/${query.trim()}`,
-      //   query: {search: query}
-      // })
+      router.push({
+        pathname: `/search/${query.trim()}`,
+        query: {search: query, page: '1'}
+      })
       setQuery('')
     }
   }

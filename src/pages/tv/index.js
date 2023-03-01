@@ -1,16 +1,12 @@
 import { Collection } from "@/components/collection";
 
 export default function TvShows({ data }) {
-  data.tRated.results.forEach((dat) => dat.media = 'tv')
-  data.tAir.results.forEach((dat) => dat.media = 'tv')
-  data.tToday.results.forEach((dat) => dat.media = 'tv')
-  data.tPopular.results.forEach((dat) => dat.media = 'tv')
   return (
     <>
-      <Collection data={data.tPopular.results} type={"top rated movies"} />
-      <Collection data={data.tRated.results} type={"upcoming movies"} />
-      <Collection data={data.tAir.results} type={"movies now playing"} />
-      <Collection data={data.tToday.results} type={"popular movies"} />
+      <Collection data={data.tvPopular.results} type={"popular TV shows"} linkPath='tv/popular/1' />
+      <Collection data={data.tvRated.results} type={"top rated TV shows"} linkPath='tv/rated/1' />
+      <Collection data={data.tvAir.results} type={"TV on the air"} linkPath='tv/air/1' />
+      <Collection data={data.tvToday.results} type={"TV airing today"} linkPath='tv/today/1' />
     </>
   );
 }

@@ -1,27 +1,37 @@
 .card {
+    width: 250px;
+    display: grid;
+    place-items: center;
     margin: 0.5rem 1rem 0 0;
 }
 
 .imageContainer {
     position: relative;
     width: 150px;
-    height: 150px;
+    height: 175px;
 }
 
 .title {
+    width: 100%;
     margin-top: 0.5rem;
+    text-align: center;
+    word-wrap: break-word;
 }
 
 @media screen and (min-width: 425px) {
     .imageContainer {
-        width: 200px;
+        width: 175px;
         height: 200px;
     }
 }
 
 @media screen and (min-width: 768px) {
+    .card {
+        width: 350px;
+        margin: 0.5rem;
+    }
     .imageContainer {
-        width: 300px;
+        width: 250px;
         height: 300px;
     }
 }
