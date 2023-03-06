@@ -41,7 +41,7 @@ export default function LoginPage({data}) {
     }
 
     //redirect to home page
-    router.push("/");
+    router.push("/home");
   };
 
   const backgroundImageUrl = `https://image.tmdb.org/t/p/original/${data.trendDay.results[0].poster_path}`
