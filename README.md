@@ -10,12 +10,6 @@ Author: Ubonisrael Akpanudoh
 
 ### Built with
 
-- React
-- Next.js
-- Firebase
-- THEMOVIEDATABASE
-- Vercel
-
 - Frontend: ReactJS, NextJS, Sass
 - Backend: Firebase
 - API: TMDB API
