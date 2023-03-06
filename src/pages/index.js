@@ -6,13 +6,18 @@ import { useRouter } from "next/router";
 import { emailRegex } from "@/lib/emailregex";
 import styles from "@/styles/Login.module.scss";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthUserContext";
 
 export default function LoginPage({data}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({ email: "", password: "" });
 
+  const { user } = useAuth()
+
   const router = useRouter();
+
+  if (user) router.push('/home')
 
   const alertError = (type) => {
     if (type === "email") {

@@ -32,7 +32,7 @@
 
     form {
       width: 100%;
-    max-width: 30rem;
+      max-width: 30rem;
       height: 25rem;
       display: flex;
       align-items: flex-start;
@@ -75,25 +75,28 @@
 
 .login_input {
   width: 100%;
-padding: 0.5rem;
-border: none;
-color: var(--clr-secondary);
-background: var(--clr-primary)
+  padding: 0.5rem;
+  border: none;
+  color: var(--clr-secondary);
+  background: var(--clr-primary);
 }
 
 .loginbtn {
-    width: 20rem;
-    display: flex;
-align-item: center;
-justify-content: flex-end;
+  width: 100% !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  padding-right: 1rem !important;
 
   button {
     width: 5rem;
     height: 2rem;
     margin: 1rem;
+    margin-right: 0;
     border: none;
     border-radius: 8px;
     transition: var(--transition);
+    cursor: pointer;
 
     &:hover {
       background: var(--clr-secondary);
@@ -109,10 +112,10 @@ justify-content: flex-end;
 }
 
 .link {
-    text-decoration: underline;
-    color: white;
+  text-decoration: underline;
+  color: white;
 
-    &:hover {
-        color: blue;
-    }
+  &:hover {
+    color: blue;
+  }
 }
