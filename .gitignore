@@ -32,4 +32,4 @@ yarn-error.log*
 .vercel
 
 # apikey
-/src/config/apikey.js
+/src/config/

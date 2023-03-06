@@ -2,6 +2,7 @@ import React from "react";
 import { Card } from "./card";
 import styles from "@/styles/Collection.module.scss";
 import Link from "next/link";
+import { Timewindow } from "./timewindow";
 
 export const Collection = ({
   data,
@@ -12,28 +13,17 @@ export const Collection = ({
   linkPath,
 }) => {
   return (
-    <section>
+    <section className={styles.collection_container}>
       <article className={styles.collection_type}>
         {linkPath ? (
           <Link href={linkPath} className={styles.links}>
-            <h2>{type}</h2>
+            <h3>{type}</h3>
           </Link>
         ) : (
-          <h2>{type}</h2>
+          <h3>{type}</h3>
         )}
-        {type === "trending" ? (
-          <div className={styles.switchButton}>
-            <input
-              className={styles.switchButtonCheckbox}
-              name="window"
-              type="checkbox"
-              checked={checked}
-              onChange={setCheckBox}
-            ></input>
-            <label className={styles.switchButtonLabel} htmlFor="window">
-              <span className={styles.switchButtonLabelSpan}>Day</span>
-            </label>
-          </div>
+        {type.match(/trending/gi) ? (
+          <Timewindow checked={checked} setCheckBox={setCheckBox} />
         ) : null}
       </article>
       <section className={styles.collection}>

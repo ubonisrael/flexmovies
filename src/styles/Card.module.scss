@@ -1,0 +1,90 @@
+.card {
+  width: 250px;
+  display: grid;
+  place-items: center;
+  margin: 0.5rem 1rem 0 0;
+}
+
+.imageContainer {
+  position: relative;
+  width: 150px;
+  height: 175px;
+}
+
+.overlay_rating {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  p {
+    width: 2rem;
+    height: 2rem;
+    background: black;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+  }
+}
+
+.overlay_icons {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0;
+  overflow: hidden;
+  backdrop-filter: blur(8px) brightness(80%);
+  transition: all 0.3s ease-in-out;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  button {
+    font-size: 2rem;
+    background: none;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin: 0.5rem;
+    
+    :hover {
+        font-size: 2.5rem;
+        color: red;
+    }
+  }
+}
+
+.imageContainer:hover .overlay_icons {
+    height: 100%;
+    // bottom: 0;
+}
+
+.title {
+  width: 100%;
+  margin-top: 0.5rem;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+@media screen and (min-width: 425px) {
+  .imageContainer {
+    width: 175px;
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    width: 350px;
+    margin: 0.5rem;
+  }
+  .imageContainer {
+    width: 250px;
+    height: 300px;
+  }
+}

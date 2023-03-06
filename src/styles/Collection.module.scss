@@ -1,6 +1,10 @@
+.collection_container {
+  margin: 1rem 0 3rem;
+}
+
 .collection {
   padding: 0 0.25rem;
-  margin: 0 0 1rem 1rem;
+  margin: 0 0 2rem 1rem;
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -11,6 +15,7 @@
   cursor: pointer;
   color: var(--clr-primary);
 }
+
 
 .collection::-webkit-scrollbar {
   height: 6px;
@@ -33,19 +38,30 @@
   justify-content: flex-start;
   padding: 0.5rem;
   margin-left: 1rem;
+
+  h3 {
+    border: 1px solid rgb(231, 218, 193);
+    padding: 0.5rem;
+    border-radius: var(--radius);
+
+    &:hover {
+      color: #000;
+      background: rgb(231, 218, 193);
+    }
+  }
 }
 
 .switchButton {
   background: rgba(255, 255, 255, 0.56);
   border-radius: var(--radius);
   overflow: hidden;
-  width: 5rem;
+  width: 4rem;
   text-align: center;
   font-size: 0.8rem;
   letter-spacing: 0.5px;
   color: #155FFF;
   position: relative;
-  padding-right: 2.5rem;
+  padding-right: 2rem;
   position: relative;
   margin-left: 0.5rem;
 
@@ -55,7 +71,7 @@
     top: 0;
     bottom: 0;
     right: 0;
-    width: 2.5rem;
+    width: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,13 +91,13 @@
     z-index: 2;
 
     &:checked + .switchButtonLabel:before {
-      transform: translateX(2.5rem);
+      transform: translateX(2rem);
       transition: transform 300ms linear;
     }
 
     & + .switchButtonLabel {
       position: relative;
-      padding: 0.25rem 0;
+      padding: 0.2rem 0;
       display: block;
       user-select: none;
       pointer-events: none;
@@ -108,17 +124,17 @@
 
 @media screen and (min-width: 425px) {
   .switchButton {
-    width: 10rem;
+    width: 8rem;
     font-size: 1rem;
-    padding-right: 5rem;
+    padding-right: 4rem;
   
     &:before {
-      width: 5rem;
+      width: 4rem;
     }
   
     &Checkbox {
       &:checked + .switchButtonLabel:before {
-        transform: translateX(5rem);
+        transform: translateX(4rem);
       }
     }
   }

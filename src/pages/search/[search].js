@@ -26,7 +26,7 @@ export default function Search({ search, searchResult }) {
 
   return (
     <>
-      <h2>{`Search results for ${search}`}</h2>
+      <h2>{`Found ${searchResult.total_results} results for '${search}'`}</h2>
       <DisplayPage data={searchResult.results} title={''} />
       <Pagination
         page={searchResult.page}
@@ -39,10 +39,8 @@ export default function Search({ search, searchResult }) {
 }
 
 export async function getServerSideProps(context) {
-  console.log(context.query);
   const search = context?.query.search;
   const page = context?.query.page;
-  console.log(page);
   const searchResult = await fetch(
     `https://api.themoviedb.org/3/search/multi?query=${search}&api_key=${apikey}&language=en-US&page=${page}`
   ).then((res) => res.json());
