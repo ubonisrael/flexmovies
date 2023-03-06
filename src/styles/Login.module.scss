@@ -75,13 +75,17 @@
 
 .login_input {
   width: 100%;
+padding: 0.5rem;
+border: none;
 color: var(--clr-secondary);
 background: var(--clr-primary)
 }
 
 .loginbtn {
     width: 100%;
-    margin: 0 auto;
+    display: flex;
+align-item: center;
+justify-content: flex-end;
 
   button {
     width: 5rem;
