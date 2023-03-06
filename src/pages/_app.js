@@ -1,5 +1,5 @@
 import { MainLayout } from "@/components/main-layout";
-import { apikey } from "@/config/apikey";
+// import { apikey } from "@/config/apikey";
 import { AuthUserProvider } from "@/context/AuthUserContext";
 import "@/styles/globals.css";
 import {
@@ -50,20 +50,20 @@ App.getInitialProps = async ({ Component, ctx }) => {
         tvTrendingDay,
         tvTrendingWeek,
       ] = await Promise.all([
-        fetchTrendingDay("1", apikey),
-        fetchTrendingWeek("1", apikey),
-        mNowPlaying(apikey),
-        mPopular(apikey),
-        mTopRated(apikey),
-        mUpcoming(apikey),
-        mTrendingDay(apikey),
-        mTrendingWeek(apikey),
-        tPopular(apikey),
-        tTopRated(apikey),
-        tOnTheAir(apikey),
-        tAiringToday(apikey),
-        tTrendingDay(apikey),
-        tTrendingWeek(apikey),
+        fetchTrendingDay("1", process.env.NEXT_PUBLIC_TMDB_API_KEY),
+        fetchTrendingWeek("1", process.env.NEXT_PUBLIC_TMDB_API_KEY),
+        mNowPlaying(process.env.NEXT_PUBLIC_TMDB_API_KEY),
+        mPopular(process.env.NEXT_PUBLIC_TMDB_API_KEY),
+        mTopRated(process.env.NEXT_PUBLIC_TMDB_API_KEY),
+        mUpcoming(process.env.NEXT_PUBLIC_TMDB_API_KEY),
+        mTrendingDay(process.env.NEXT_PUBLIC_TMDB_API_KEY),
+        mTrendingWeek(process.env.NEXT_PUBLIC_TMDB_API_KEY),
+        tPopular(process.env.NEXT_PUBLIC_TMDB_API_KEY),
+        tTopRated(process.env.NEXT_PUBLIC_TMDB_API_KEY),
+        tOnTheAir(process.env.NEXT_PUBLIC_TMDB_API_KEY),
+        tAiringToday(process.env.NEXT_PUBLIC_TMDB_API_KEY),
+        tTrendingDay(process.env.NEXT_PUBLIC_TMDB_API_KEY),
+        tTrendingWeek(process.env.NEXT_PUBLIC_TMDB_API_KEY),
       ]);
 
       //movies

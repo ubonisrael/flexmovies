@@ -44,13 +44,13 @@ The main purpose of this project is to take advantages of the capabilities of Ne
 
 ### Future improvements
 
-Add a email validation feature, forgot password
+- Add a email validation feature, forgot password
 
-Customize error pages
+- Customize error pages
 
-Fetch data through api routes
+- Fetch data through api routes
 
-Add notifications to indicate whether an item has been aded or removed from a list and popovers to give more detail about an icon on hover
+- Add notifications to indicate whether an item has been aded or removed from a list and popovers to give more detail about an icon on hover
 
 ### Getting started
 

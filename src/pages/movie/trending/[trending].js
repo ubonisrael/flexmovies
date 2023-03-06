@@ -65,7 +65,7 @@ export async function getServerSideProps(context) {
   const page = context.query.page ? context.query.page : "1";
   const window = context.query.window ? context.query.window : "day";
   const res = await fetch(
-    `https://api.themoviedb.org/3/trending/movie/${window}?&api_key=${apikey}&language=en-US&page=${page}`
+    `https://api.themoviedb.org/3/trending/movie/${window}?&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&page=${page}`
   ).then((res) => res.json());
   return {
     props: {

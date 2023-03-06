@@ -34,15 +34,6 @@ body {
     font-size: 0.8rem;
 }
 
-body.dark-theme {
-    --clr-text: rgb(221, 220, 235);
-    --clr-primarybg: rgb(1, 9, 19);
-    --clr-secondarybg: rgb(7, 23, 43);
-    --clr-tertiarybg: rgb(25, 53, 87);
-    --clr-secondary: rgb(222, 230, 236);
-    --clr-primary: rgb(0, 0, 0);
-}
-
 ul {
     list-style-type: none;
 }
@@ -120,23 +111,3 @@ input[type=number] {
     }
 }
 
-@media (prefers-color-sheme: dark) {
-    /* defaults to dark theme */
-    body {
-        --clr-text: rgb(221, 220, 235);
-    --clr-primarybg: rgb(1, 9, 19);
-    --clr-secondarybg: rgb(7, 23, 43);
-    --clr-tertiarybg: rgb(25, 53, 87);
-    --clr-secondary: rgb(222, 230, 236);
-    --clr-primary: black;
-    }
-
-    body.light-theme {
-        --clr-text: rgb(4, 1, 27);
-    --clr-primarybg: rgb(165, 193, 197);
-    --clr-secondarybg: rgb(205, 223, 226);
-    --clr-tertiarybg: rgb(222, 230, 236);
-    --clr-primary: rgb(222, 230, 236);
-    --clr-secondary: black;
-    }
-}

@@ -36,7 +36,7 @@ export default function TrendingDay({ res }) {
 export async function getServerSideProps(context) {
   const page = context.query.trending ? context.query.trending : "1";
   const res = await fetch(
-    `https://api.themoviedb.org/3/trending/all/day?&api_key=${apikey}&language=en-US&page=${page}`
+    `https://api.themoviedb.org/3/trending/all/day?&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&page=${page}`
   ).then((res) => res.json());
   return {
     props: {

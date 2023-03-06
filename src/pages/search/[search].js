@@ -42,7 +42,7 @@ export async function getServerSideProps(context) {
   const search = context?.query.search;
   const page = context?.query.page;
   const searchResult = await fetch(
-    `https://api.themoviedb.org/3/search/multi?query=${search}&api_key=${apikey}&language=en-US&page=${page}`
+    `https://api.themoviedb.org/3/search/multi?query=${search}&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&page=${page}`
   ).then((res) => res.json());
   return {
     props: {

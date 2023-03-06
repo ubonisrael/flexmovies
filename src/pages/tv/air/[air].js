@@ -32,7 +32,7 @@ export default function OnTheAir({ res }) {
 export async function getServerSideProps(context) {
   const page = context.query.air ? context.query.air : '1'
   const res = await fetch(
-    `https://api.themoviedb.org/3/tv/on_the_air?&api_key=${apikey}&language=en-US&page=${page}`
+    `https://api.themoviedb.org/3/tv/on_the_air?&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&page=${page}`
   ).then((res) => res.json());
   return {
     props: {

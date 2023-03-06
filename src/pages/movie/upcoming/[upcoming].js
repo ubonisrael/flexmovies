@@ -32,7 +32,7 @@ export default function Upcoming({ res }) {
 export async function getServerSideProps(context) {
   const page = context.query.upcoming ? context.query.upcoming : '1'
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/upcoming?&api_key=${apikey}&language=en-US&page=${page}`
+    `https://api.themoviedb.org/3/movie/upcoming?&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&page=${page}`
   ).then((res) => res.json());
   return {
     props: {

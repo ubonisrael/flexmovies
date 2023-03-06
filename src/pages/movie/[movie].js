@@ -14,13 +14,13 @@ export default function MoviePage({ movie, casts, recommendations }) {
 export async function getServerSideProps(context) {
   const movieId = context.query.movie
   const movie = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apikey}&language=en-US`
+    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
   ).then((res) => res.json());
   const casts = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apikey}&language=en-US`
+    `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
   ).then((res) => res.json());
   const recommendations = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${apikey}&language=en-US`
+    `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
   ).then((res) => res.json());
   return {
     props: {
