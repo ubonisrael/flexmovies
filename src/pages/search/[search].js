@@ -1,7 +1,6 @@
 import React from "react";
 import { DisplayPage } from "@/components/displaypage";
 import { Pagination } from "@/components/pagination";
-import { apikey } from "@/config/apikey";
 import { useRouter } from "next/router";
 
 export default function Search({ search, searchResult }) {

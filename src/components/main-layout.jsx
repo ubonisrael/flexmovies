@@ -6,6 +6,7 @@ import React, { useEffect } from "react";
 import { Footer } from "./footer";
 import { Header } from "./header";
 import { Navbar } from "./navbar";
+import Spinner from "./spinner";
 
 export const MainLayout = ({ children }) => {
   const { user, loading } = useAuth();
@@ -20,12 +21,14 @@ export const MainLayout = ({ children }) => {
 
   return (
     <>
-      {user ? (
+      {loading && !user ? (
+        <Spinner />
+      ) : user ? (
         <FavContext>
           <ListContext>
             <Navbar />
             <Header />
-            {children}
+            {children} 
             <Footer />
           </ListContext>
         </FavContext>

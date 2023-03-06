@@ -1,5 +1,4 @@
 import { MainLayout } from "@/components/main-layout";
-// import { apikey } from "@/config/apikey";
 import { AuthUserProvider } from "@/context/AuthUserContext";
 import "@/styles/globals.css";
 import {

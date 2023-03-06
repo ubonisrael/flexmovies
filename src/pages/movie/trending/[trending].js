@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { DisplayPage } from "@/components/displaypage";
 import { Pagination } from "@/components/pagination";
 import { Timewindow } from "@/components/timewindow";
-import { apikey } from "@/config/apikey";
 import { useRouter } from "next/router";
 
 export default function TrendingMovies({ res }) {

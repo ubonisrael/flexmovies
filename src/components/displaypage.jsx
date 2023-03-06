@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "./card";
-import styles from "@/styles/DisplayPage.module.scss";
+import styles from "@/styles/Displaypage.module.scss";
 
 export const DisplayPage = ({ data, title }) => {
   return (

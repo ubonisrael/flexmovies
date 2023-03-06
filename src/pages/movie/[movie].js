@@ -1,5 +1,4 @@
 import { Moviepage } from "@/components/moviepage";
-import { apikey } from "@/config/apikey";
 import React from "react";
 
 export default function MoviePage({ movie, casts, recommendations }) {

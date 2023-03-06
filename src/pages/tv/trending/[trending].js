@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { DisplayPage } from "@/components/displaypage";
 import { Pagination } from "@/components/pagination";
 import { Timewindow } from "@/components/timewindow";
-import { apikey } from "@/config/apikey";
 import { useRouter } from "next/router";
 
 export default function TrendingTV({ res }) {
@@ -65,7 +64,7 @@ export async function getServerSideProps(context) {
   const page = context.query.page ? context.query.page : "1";
   const window = context.query.window ? context.query.window : "day";
   const res = await fetch(
-    `https://api.themoviedb.org/3/trending/tv/${window}?&api_key=${apikey}&language=en-US&page=${page}`
+    `https://api.themoviedb.org/3/trending/tv/${window}?&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&page=${page}`
   ).then((res) => res.json());
   return {
     props: {

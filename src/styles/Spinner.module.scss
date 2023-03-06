@@ -1,0 +1,34 @@
+.lds_fb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+  }
+  .lds_fb div {
+    width: 24px;
+    margin: 0.5rem;
+    background: var(--clr-secondary);
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  }
+  .lds_fb div:nth-child(1) {
+    animation-delay: -0.36s;
+  }
+  .lds_fb div:nth-child(2) {
+    animation-delay: -0.24s;
+  }
+  .lds_fb div:nth-child(3) {
+    animation-delay: -0.12;
+  }
+  .lds_fb div:nth-child(4) {
+    animation-delay: 0;
+  }
+  @keyframes lds_fb {
+    0% {
+      height: 72px;
+    }
+    50%, 100% {
+      height: 36px;
+    }
+  }
+  
