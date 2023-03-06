@@ -74,7 +74,7 @@
 }
 
 .login_input {
-  width: 20rem;
+  width: 100%;
 padding: 0.5rem;
 border: none;
 color: var(--clr-secondary);
@@ -82,7 +82,7 @@ background: var(--clr-primary)
 }
 
 .loginbtn {
-    width: 100%;
+    width: 20rem;
     display: flex;
 align-item: center;
 justify-content: flex-end;
