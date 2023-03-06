@@ -10,17 +10,17 @@ Author: Ubonisrael Akpanudoh
 
 ### Built with
 
--React
--Next.js
--Firebase
--THEMOVIEDATABASE
--Vercel
+- React
+- Next.js
+- Firebase
+- THEMOVIEDATABASE
+- Vercel
 
--Frontend: ReactJS, NextJS, Sass
--Backend: Firebase
--API: TMDB API
--Version Control: Git
--Hosting: Vercel
+- Frontend: ReactJS, NextJS, Sass
+- Backend: Firebase
+- API: TMDB API
+- Version Control: Git
+- Hosting: Vercel
 
 ### Features
 
@@ -42,11 +42,11 @@ The main purpose of this project is to take advantages of the capabilities of Ne
 
 ### Web stack and explanation
 
--Semantic HTML5 markup
--Flexbox
--Mobile-first workflow
--Next.js
--Firebase
+- Semantic HTML5 markup
+- Flexbox
+- Mobile-first workflow
+- Next.js
+- Firebase
 
 ### Future improvements
 
