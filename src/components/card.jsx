@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import styles from "@/styles/Card.module.scss";
 import { MdFavorite, MdFavoriteBorder, MdOutlinePlaylistAdd, MdOutlinePlaylistAddCheck } from 'react-icons/md'
@@ -8,12 +8,13 @@ import { useFavContext } from "@/context/FavouriteContext";
 import { useAuth } from "@/context/AuthUserContext";
 import CheckFave from "@/lib/checkFave";
 import { useWatchContext } from "@/context/WatchListContext";
+import { toast } from "react-toastify";
 
 export const Card = ({ item }) => {
   
   const router = useRouter()
   
-  const {user, loading} = useAuth();
+  const {user} = useAuth();
   
   const fav = useFavContext()
   const watch = useWatchContext()
@@ -30,10 +31,26 @@ export const Card = ({ item }) => {
   const handleFav = (e) => {
     e.stopPropagation()
 
+    if (!user) {
+      toast("You must be logged in to perform this action", {
+        position: 'top-center',
+        type: 'error'
+      });
+      return
+    }
+
     Favourites(item, fav, user.uid, 'favorites')
   }
   const handleWatchlist = (e) => {
     e.stopPropagation()
+
+    if (!user) {
+      toast("You must be logged in to perform this action", {
+        position: 'top-center',
+        type: 'error'
+      });
+      return
+    }
 
     Favourites(item, watch, user.uid, 'watchlist')
   }

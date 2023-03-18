@@ -1,11 +1,17 @@
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 import { Moviepage } from "@/components/moviepage";
+import { Navbar } from "@/components/navbar";
 import React from "react";
 
 export default function MoviePage({ show, casts, recommendations }) {
     recommendations.results.forEach((dat) => dat.media = 'tv')
   return (
     <>
+    <Navbar />
+      <Header />
       <Moviepage item={show} casts={casts} rec={recommendations} />
+      <Footer />
     </>
   );
 }

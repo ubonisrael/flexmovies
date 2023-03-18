@@ -17,6 +17,8 @@ import {
   tTrendingDay,
   tTrendingWeek,
 } from "@/utils/fetch";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function App({ Component, pageProps, data }) {
   
@@ -24,6 +26,7 @@ export default function App({ Component, pageProps, data }) {
       <AuthUserProvider>
         <MainLayout>
         <Component {...pageProps} data={data} />
+        <ToastContainer />
       </MainLayout>
       </AuthUserProvider>
   );

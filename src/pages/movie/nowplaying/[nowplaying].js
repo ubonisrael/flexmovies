@@ -1,4 +1,7 @@
 import { DisplayPage } from "@/components/displaypage";
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
+import { Navbar } from "@/components/navbar";
 import { Pagination } from "@/components/pagination";
 import { useRouter } from "next/router";
 
@@ -22,8 +25,11 @@ export default function NowPlaying({ res }) {
 
   return (
     <>
+    <Navbar />
+      <Header />
       <DisplayPage data={res.results} title={'Movies Now Playing'}/>
       <Pagination page={res.page} totalPages={res.total_pages} nextPage={nextPage} prevPage={prevPage}/>
+      <Footer />
     </>
   );
 }

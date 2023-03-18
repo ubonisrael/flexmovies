@@ -10,10 +10,11 @@ import { useFavContext } from "@/context/FavouriteContext";
 import { useWatchContext } from "@/context/WatchListContext";
 import Favourites from "@/lib/addToFavourite";
 import { useAuth } from "@/context/AuthUserContext";
+import { toast } from "react-toastify";
 
 export const Moviepage = ({ item, casts, rec }) => {
 
-  const {user, loading} = useAuth();
+  const {user} = useAuth();
   
   const fav = useFavContext()
   const watch = useWatchContext()
@@ -24,10 +25,26 @@ export const Moviepage = ({ item, casts, rec }) => {
   const handleFav = (e) => {
     e.stopPropagation()
 
+    if (!user) {
+      toast("You must be logged in to perform this action", {
+        position: 'top-center',
+        type: 'error'
+      });
+      return
+    }
+
     Favourites(item, fav, user.uid, 'favorites')
   }
   const handleWatchlist = (e) => {
     e.stopPropagation()
+
+    if (!user) {
+      toast("You must be logged in to perform this action", {
+        position: 'top-center',
+        type: 'error'
+      });
+      return
+    }
 
     Favourites(item, watch, user.uid, 'watchlist')
   }
