@@ -15,7 +15,7 @@ export const Header = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <Link href="/home">
+        <Link href="/">
           <p className={styles.links}>All</p>
         </Link>
         <Link href="/movie">
