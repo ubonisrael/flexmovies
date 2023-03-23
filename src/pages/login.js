@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { emailRegex } from "@/lib/emailregex";
 import styles from "@/styles/Login.module.scss";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 export default function LoginPage({data}) {
   const [email, setEmail] = useState("");
