@@ -1,21 +1,15 @@
-.navbar {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.title {
-    margin: 0.5rem;
-    text-align: center;
-}
-
 .searchcontainer {
-    margin: 0.5rem;
+    width: 100%;
+    margin: 1rem 0;
+
+    @media screen and (min-width: 768px) {
+        width: 300px;
+        margin: 0;
+    }
 }
 
 .search {
-    width: 14rem;
+    width: calc(100% - 4rem);
     height: 2rem;
     padding: 0.5rem;
     border: none;
@@ -23,6 +17,7 @@
 }
 
 .searchbtn {
+    width: 4rem;
     height: 2rem;
     padding: 0.5rem;
     color: var(--clr-primary);
@@ -36,16 +31,4 @@
 .searchbtn:hover {
     background: var(--clr-secondary);
     border: 1px solid var(--clr-primary);
-}
-
-@media screen and (min-width: 600px) {
-    .navbar {
-        flex-direction: row;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .search {
-        width: 22rem;
-    }
 }

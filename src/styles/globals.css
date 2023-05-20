@@ -9,6 +9,8 @@
     --max-width: 700px;
     --spacing:0.2rem;
     --clr-red: red;
+    --br-tablet: 768px;
+    --br-laptop: 992px;
 }
 
 *, ::after, ::before {
@@ -85,6 +87,13 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
 @media screen and (min-width: 800px) {
     body {
         font-size: 1rem;
@@ -111,3 +120,14 @@ input[type=number] {
     }
 }
 
+.sr-only{
+    position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  white-space: nowrap;
+}

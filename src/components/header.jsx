@@ -1,32 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "@/styles/Header.module.scss";
-import Link from "next/link";
-import { RiLogoutCircleRLine } from "react-icons/ri";
-import LogOut from "@/lib/logout";
+import { Navbar } from "./navbar";
+import {AiOutlineMenu} from 'react-icons/ai'
 
 export const Header = () => {
+  const [nav, setNav] = useState(false)
+
+  const toggleNav = () => setNav(prev => !prev)
+
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <Link href="/home">
-          <p className={styles.links}>All</p>
-        </Link>
-        <Link href="/movie">
-          <p className={styles.links}>Movies</p>
-        </Link>
-        <Link href="/tv">
-          <p className={styles.links}>TV</p>
-        </Link>
-        <Link href="/user">
-          <p className={styles.links}>My Page</p>
-        </Link>
-      </div>
-      <div>
-        <button className={styles.btn} onClick={LogOut}>
-          Log Out   <RiLogoutCircleRLine />
-        </button>
-      </div>
-    </div>
+    <>
+      <header className={styles.header}>
+        <h1 className={styles.title}>flexmovies</h1>
+        <button className={styles.menuBtn} onClick={toggleNav}><AiOutlineMenu /><span className="sr-only">open menu</span></button>
+        <Navbar nav={nav} toggleNav={toggleNav}/>
+      </header>
+    </>
   );
 };

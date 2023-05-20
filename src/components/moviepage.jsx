@@ -13,7 +13,7 @@ import { useAuth } from "@/context/AuthUserContext";
 
 export const Moviepage = ({ item, casts, rec }) => {
 
-  const {user, loading} = useAuth();
+  const {user} = useAuth();
   
   const fav = useFavContext()
   const watch = useWatchContext()
