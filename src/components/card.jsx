@@ -2,19 +2,17 @@ import React from "react";
 import Image from "next/image";
 import styles from "@/styles/Card.module.scss";
 import { MdFavorite, MdFavoriteBorder, MdOutlinePlaylistAdd, MdOutlinePlaylistAddCheck } from 'react-icons/md'
-import { useRouter } from "next/router";
 import { useFavContext } from "@/context/FavouriteContext";
-import { useAuth } from "@/context/AuthUserContext";
 import { CheckList } from "@/lib/checkList";
 import { useWatchContext } from "@/context/WatchListContext";
 import {List} from "@/lib/addToList";
+import { CheckUser } from "@/lib/checkuser";
+import { useAuth } from "@/context/AuthUserContext";
 
 export const Card = ({ item }) => {
   
-  const router = useRouter()
-  
-  const {user} = useAuth();
-  
+  const {user} = useAuth()
+
   const fav = useFavContext()
   const watch = useWatchContext()
 
@@ -30,12 +28,20 @@ export const Card = ({ item }) => {
   const handleFav = (e) => {
     e.stopPropagation()
 
-    List(item, fav, user.uid, 'favorites')
+    if (user) {
+      List(item, fav, user.uid, 'favorites')
+      return
+    }
+    CheckUser()
   }
   const handleWatchlist = (e) => {
     e.stopPropagation()
 
-    List(item, watch, user.uid, 'watchlist')
+    if (user) {
+      List(item, watch, user.uid, 'watchlist')
+      return
+    }
+    CheckUser()
   }
   
   const divStyle = {

@@ -8,13 +8,13 @@ import { CheckList } from "@/lib/checkList";
 import { useFavContext } from "@/context/FavouriteContext";
 import { useWatchContext } from "@/context/WatchListContext";
 import { List } from "@/lib/addToList";
+import { CheckUser } from "@/lib/checkuser";
 import { useAuth } from "@/context/AuthUserContext";
-import { toast } from "react-toastify";
 
 export const Moviepage = ({ item, casts, rec }) => {
 
-  const {user} = useAuth();
-  
+  const {user} = useAuth
+
   const fav = useFavContext()
   const watch = useWatchContext()
 
@@ -24,12 +24,20 @@ export const Moviepage = ({ item, casts, rec }) => {
   const handleFav = (e) => {
     e.stopPropagation()
 
-    List(item, fav, user.uid, 'favorites')
+    if (user) {
+      List(item, fav, user.uid, 'favorites')
+      return
+    }
+    CheckUser()
   }
   const handleWatchlist = (e) => {
     e.stopPropagation()
 
-    List(item, watch, user.uid, 'watchlist')
+    if (user) {
+      List(item, watch, user.uid, 'watchlist')
+      return
+    }
+    CheckUser()
   }
 
   const divStyle = {

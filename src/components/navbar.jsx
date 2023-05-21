@@ -15,9 +15,6 @@ export const Navbar = ({nav, toggleNav}) => {
 
   const handleLogin = () => router.push("/login");
 
-  // useEffect(() => {
-  //   //
-  // }, [nav])
 
   return (
     <div className={nav ? [styles.navbar, styles.showNav].join(' '): styles.navbar}>
@@ -27,9 +24,13 @@ export const Navbar = ({nav, toggleNav}) => {
       </button>
       <SearchBar />
       <div>
-        {user ? <button className={styles.btn} onClick={LogOut}>
+        {user ? <button className={styles.btn} onClick={()=> {
+          toggleNav()
+          LogOut()}}>
           Sign Out <RiLogoutCircleRLine fontSize={24} />
-        </button> : <button className={styles.btn} onClick={handleLogin}>
+        </button> : <button className={styles.btn} onClick={()=> {
+          toggleNav()
+          handleLogin()}}>
           Sign In <RiLoginCircleLine fontSize={24} />
         </button>}
       </div>
