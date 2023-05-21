@@ -33,7 +33,7 @@
     form {
       width: 100%;
       max-width: 30rem;
-      height: 25rem;
+      height: 30rem;
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
@@ -118,4 +118,9 @@
   &:hover {
     color: blue;
   }
+}
+
+.verify {
+  text-align: center;
+  padding: 1rem 2rem;
 }

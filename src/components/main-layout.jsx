@@ -1,4 +1,3 @@
-import { useAuth } from "@/context/AuthUserContext";
 import FavContext from "@/context/FavouriteContext";
 import ListContext from "@/context/WatchListContext";
 import { useRouter } from "next/router";

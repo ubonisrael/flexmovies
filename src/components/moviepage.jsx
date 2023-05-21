@@ -9,6 +9,7 @@ import { useFavContext } from "@/context/FavouriteContext";
 import { useWatchContext } from "@/context/WatchListContext";
 import { List } from "@/lib/addToList";
 import { useAuth } from "@/context/AuthUserContext";
+import { toast } from "react-toastify";
 
 export const Moviepage = ({ item, casts, rec }) => {
 

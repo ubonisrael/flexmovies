@@ -1,14 +1,18 @@
 import { auth } from "@/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 
 export default async function signUp(email, password) {
-    let result, error
+    let error
 
     try {
-        result = await createUserWithEmailAndPassword(auth, email, password)
+        await createUserWithEmailAndPassword(auth, email, password)
+        await sendEmailVerification(auth.currentUser, {
+            url: "http://www.flexmovies.vercel.app"
+        })
+        await auth.signOut()
     } catch(e) {
         error = e
     }
 
-    return {result, error}
+    return {error}
 }
