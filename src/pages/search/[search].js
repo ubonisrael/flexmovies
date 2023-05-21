@@ -2,9 +2,6 @@ import React from "react";
 import { DisplayPage } from "@/components/displaypage";
 import { Pagination } from "@/components/pagination";
 import { useRouter } from "next/router";
-import { Navbar } from "@/components/navbar";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
 
 export default function Search({ search, searchResult }) {
 
@@ -28,8 +25,6 @@ export default function Search({ search, searchResult }) {
 
   return (
     <>
-    <Navbar />
-      <Header />
       <h2>{`Found ${searchResult.total_results} results for '${search}'`}</h2>
       <DisplayPage data={searchResult.results} title={''} />
       <Pagination
@@ -38,7 +33,6 @@ export default function Search({ search, searchResult }) {
         nextPage={nextPage}
         prevPage={prevPage}
       />
-      <Footer />
     </>
   );
 }

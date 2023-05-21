@@ -1,7 +1,4 @@
 import { DisplayPage } from "@/components/displaypage";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-import { Navbar } from "@/components/navbar";
 import { Pagination } from "@/components/pagination";
 import { useRouter } from "next/router";
 
@@ -23,8 +20,6 @@ export default function TrendingDay({ res }) {
 
   return (
     <>
-    <Navbar />
-      <Header />
       <DisplayPage data={res.results} title={"Trending This Week"} />
       <Pagination
         page={res.page}
@@ -32,7 +27,6 @@ export default function TrendingDay({ res }) {
         nextPage={nextPage}
         prevPage={prevPage}
       />
-      <Footer />
     </>
   );
 }

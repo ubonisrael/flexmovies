@@ -1,7 +1,6 @@
 import FavContext from "@/context/FavouriteContext";
 import ListContext from "@/context/WatchListContext";
-import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React from "react";
 import { Footer } from "./footer";
 import { Header } from "./header";
 

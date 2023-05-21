@@ -1,7 +1,4 @@
 import { Collection } from "@/components/collection";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-import { Navbar } from "@/components/navbar";
 import { useState } from "react";
 
 export default function Movies({ data }) {
@@ -13,8 +10,6 @@ export default function Movies({ data }) {
   
   return (
     <>
-    <Navbar />
-      <Header />
     <Collection
         data={checked ? data.moviesTrendingWeek.results : data.moviesTrendingDay.results}
         type={"trending movies"}
@@ -26,7 +21,6 @@ export default function Movies({ data }) {
       <Collection data={data.moviesUpcoming.results} type={"upcoming movies"} linkPath='movie/upcoming/1' />
       <Collection data={data.moviesNowPlaying.results} type={"movies now playing"} linkPath='movie/nowplaying/1' />
       <Collection data={data.moviesPopular.results} type={"popular movies"} linkPath='movie/popular/1' />
-      <Footer />
     </>
   );
 }

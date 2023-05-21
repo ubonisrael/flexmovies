@@ -3,9 +3,6 @@ import { DisplayPage } from "@/components/displaypage";
 import { Pagination } from "@/components/pagination";
 import { Timewindow } from "@/components/timewindow";
 import { useRouter } from "next/router";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
-import { Header } from "@/components/header";
 
 export default function TrendingTV({ res }) {
   const [checked, setChecked] = useState(false);
@@ -50,8 +47,6 @@ export default function TrendingTV({ res }) {
 
   return (
     <>
-    <Navbar />
-      <Header />
       <Timewindow checked={checked} setCheckBox={setCheckBox} />
       <DisplayPage data={res.results} title={"Trending TV Shows"} />
       <Pagination
@@ -60,7 +55,6 @@ export default function TrendingTV({ res }) {
         nextPage={nextPage}
         prevPage={prevPage}
       />
-      <Footer />
     </>
   );
 }

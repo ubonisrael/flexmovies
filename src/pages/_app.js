@@ -27,7 +27,6 @@ export default function App({ Component, pageProps, data }) {
         <MainLayout>
         <Component {...pageProps} data={data} />
         <ToastContainer />
-        <ToastContainer />
       </MainLayout>
       </AuthUserProvider>
   );

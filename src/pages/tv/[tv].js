@@ -8,10 +8,7 @@ export default function MoviePage({ show, casts, recommendations }) {
     recommendations.results.forEach((dat) => dat.media = 'tv')
   return (
     <>
-    <Navbar />
-      <Header />
       <Moviepage item={show} casts={casts} rec={recommendations} />
-      <Footer />
     </>
   );
 }

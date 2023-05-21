@@ -1,7 +1,4 @@
 import { DisplayPage } from "@/components/displaypage";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-import { Navbar } from "@/components/navbar";
 import { Pagination } from "@/components/pagination";
 import { useRouter } from "next/router";
 
@@ -25,11 +22,8 @@ export default function OnTheAir({ res }) {
 
   return (
     <>
-    <Navbar />
-      <Header />
       <DisplayPage data={res.results} title={'TV On The Air'}/>
       <Pagination page={res.page} totalPages={res.total_pages} nextPage={nextPage} prevPage={prevPage}/>
-      <Footer />
     </>
   );
 }
