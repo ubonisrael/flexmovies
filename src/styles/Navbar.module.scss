@@ -10,15 +10,17 @@
     transform: translateX(-100%);
     background: var(--clr-secondary);
     z-index: 9;
+    transition: var(--transition);
     
     @media screen and (min-width: 768px) {
         position: static;
         width: auto;
         height: auto;
         flex-direction: row-reverse;
+        flex-wrap: wrap;
         align-items: center;
-        gap: 1rem;
         background: none;
+        padding: 0;
         transform: translateX(0);
     }
 }

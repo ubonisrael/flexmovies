@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "@/styles/Navbar.module.scss";
 import Link from "next/link";
 import LogOut from "@/lib/logout";
@@ -14,6 +14,10 @@ export const Navbar = ({nav, toggleNav}) => {
   const router = useRouter();
 
   const handleLogin = () => router.push("/login");
+
+  // useEffect(() => {
+  //   //
+  // }, [nav])
 
   return (
     <div className={nav ? [styles.navbar, styles.showNav].join(' '): styles.navbar}>

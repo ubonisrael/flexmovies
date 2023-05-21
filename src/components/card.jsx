@@ -1,25 +1,25 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import styles from "@/styles/Card.module.scss";
 import { MdFavorite, MdFavoriteBorder, MdOutlinePlaylistAdd, MdOutlinePlaylistAddCheck } from 'react-icons/md'
 import { useRouter } from "next/router";
-import Favourites from "@/lib/addToFavourite";
 import { useFavContext } from "@/context/FavouriteContext";
 import { useAuth } from "@/context/AuthUserContext";
-import CheckFave from "@/lib/checkFave";
+import { CheckList } from "@/lib/checkList";
 import { useWatchContext } from "@/context/WatchListContext";
+import {List} from "@/lib/addToList";
 
 export const Card = ({ item }) => {
   
   const router = useRouter()
   
-  const {user, loading} = useAuth();
+  const {user} = useAuth();
   
   const fav = useFavContext()
   const watch = useWatchContext()
 
-  const checkedFave = CheckFave(fav, item.id)
-  const checkedWList = CheckFave(watch, item.id)
+  const checkedFave = CheckList(fav, item.id)
+  const checkedWList = CheckList(watch, item.id)
 
   let linkPath = `/${item.media || item.media_type}/${item.id}`;
 
@@ -30,17 +30,18 @@ export const Card = ({ item }) => {
   const handleFav = (e) => {
     e.stopPropagation()
 
-    Favourites(item, fav, user.uid, 'favorites')
+    List(item, fav, user.uid, 'favorites')
   }
   const handleWatchlist = (e) => {
     e.stopPropagation()
 
-    Favourites(item, watch, user.uid, 'watchlist')
+    List(item, watch, user.uid, 'watchlist')
   }
   
   const divStyle = {
     borderRadius: "16px",
   };
+  
   const imagePath = `https://image.tmdb.org/t/p/original/${item.poster_path}`;
 
   return (

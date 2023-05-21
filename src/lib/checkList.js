@@ -1,4 +1,4 @@
-export default function CheckFave(array, itemId) {
+export function CheckList(array, itemId) {
   const index = array.findIndex(item => item.id === itemId)
   
   if (index < 0) {

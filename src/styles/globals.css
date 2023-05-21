@@ -94,6 +94,11 @@ select {
   font: inherit;
 }
 
+button {
+    cursor: pointer;
+    border: none;
+}
+
 @media screen and (min-width: 800px) {
     body {
         font-size: 1rem;

@@ -1,14 +1,13 @@
 .card {
-  width: 250px;
+  width: 125px;
   display: grid;
   place-items: center;
-  margin: 0.5rem 1rem 0 0;
 }
 
 .imageContainer {
   position: relative;
-  width: 150px;
-  height: 175px;
+  width: 125px;
+  height: 150px;
 }
 
 .overlay_rating {
@@ -51,17 +50,16 @@
     border: none;
     cursor: pointer;
     margin: 0.5rem;
-    
+
     :hover {
-        font-size: 2.5rem;
-        color: red;
+      font-size: 2.5rem;
+      color: red;
     }
   }
 }
 
 .imageContainer:hover .overlay_icons {
-    height: 100%;
-    // bottom: 0;
+  height: 100%;
 }
 
 .title {
@@ -72,19 +70,21 @@
 }
 
 @media screen and (min-width: 425px) {
+  .card {
+    width: 150px;
+  }
   .imageContainer {
-    width: 175px;
-    height: 200px;
+    width: 150px;
+    height: 175px;
   }
 }
 
 @media screen and (min-width: 768px) {
   .card {
-    width: 350px;
-    margin: 0.5rem;
+    width: 200px;
   }
   .imageContainer {
-    width: 250px;
-    height: 300px;
+    width: 200px;
+    height: 250px;
   }
 }

@@ -1,14 +1,13 @@
 import React from "react";
-
 import Image from "next/image";
 import styles from "@/styles/Moviepage.module.scss";
 import { Collection } from "./collection";
 import Link from "next/link";
 import { MdFavorite, MdFavoriteBorder, MdOutlinePlaylistAdd, MdOutlinePlaylistAddCheck } from "react-icons/md";
-import CheckFave from "@/lib/checkFave";
+import { CheckList } from "@/lib/checkList";
 import { useFavContext } from "@/context/FavouriteContext";
 import { useWatchContext } from "@/context/WatchListContext";
-import Favourites from "@/lib/addToFavourite";
+import { List } from "@/lib/addToList";
 import { useAuth } from "@/context/AuthUserContext";
 
 export const Moviepage = ({ item, casts, rec }) => {
@@ -18,18 +17,18 @@ export const Moviepage = ({ item, casts, rec }) => {
   const fav = useFavContext()
   const watch = useWatchContext()
 
-  const checkedFave = CheckFave(fav, item.id)
-  const checkedWList = CheckFave(watch, item.id)
+  const checkedFave = CheckList(fav, item.id)
+  const checkedWList = CheckList(watch, item.id)
 
   const handleFav = (e) => {
     e.stopPropagation()
 
-    Favourites(item, fav, user.uid, 'favorites')
+    List(item, fav, user.uid, 'favorites')
   }
   const handleWatchlist = (e) => {
     e.stopPropagation()
 
-    Favourites(item, watch, user.uid, 'watchlist')
+    List(item, watch, user.uid, 'watchlist')
   }
 
   const divStyle = {

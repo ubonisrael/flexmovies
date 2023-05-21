@@ -1,21 +1,27 @@
 .collection_container {
-  margin: 1rem 0 3rem;
+
+  @media screen and (min-width: 768px) {
+    margin: 1rem 0;
+  }
 }
 
 .collection {
   padding: 0 0.25rem;
   margin: 0 0 2rem 1rem;
   display: flex;
+  gap: 0.5rem;
   overflow-x: scroll;
   overflow-y: hidden;
+
+  @media screen and (min-width: 768px) {
+    gap: 1rem;
+  }
 }
 
 .links {
   text-decoration: none;
   cursor: pointer;
-  color: var(--clr-primary);
 }
-
 
 .collection::-webkit-scrollbar {
   height: 6px;
@@ -40,13 +46,16 @@
   margin-left: 1rem;
 
   h3 {
-    border: 1px solid rgb(231, 218, 193);
+    color: var(--clr-secondary);
+    background: rgb(231, 218, 193);
+    text-transform: uppercase;
     padding: 0.5rem;
     border-radius: var(--radius);
-
+    border: 1px solid rgb(231, 218, 193);
+    
     &:hover {
-      color: #000;
-      background: rgb(231, 218, 193);
+      color: var(--clr-secondary);
+      background: var(--clr-primary);
     }
   }
 }
@@ -55,15 +64,14 @@
   background: rgba(255, 255, 255, 0.56);
   border-radius: var(--radius);
   overflow: hidden;
-  width: 4rem;
+  width: 6rem;
   text-align: center;
-  font-size: 0.8rem;
-  letter-spacing: 0.5px;
-  color: #155FFF;
+  font-size: 1rem;
+  color: #155fff;
   position: relative;
-  padding-right: 2rem;
+  padding-right: 3rem;
   position: relative;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
 
   &:before {
     content: "Week";
@@ -71,7 +79,7 @@
     top: 0;
     bottom: 0;
     right: 0;
-    width: 2rem;
+    width: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,7 +99,7 @@
     z-index: 2;
 
     &:checked + .switchButtonLabel:before {
-      transform: translateX(2rem);
+      transform: translateX(3rem);
       transition: transform 300ms linear;
     }
 
@@ -127,11 +135,11 @@
     width: 8rem;
     font-size: 1rem;
     padding-right: 4rem;
-  
+
     &:before {
       width: 4rem;
     }
-  
+
     &Checkbox {
       &:checked + .switchButtonLabel:before {
         transform: translateX(4rem);
