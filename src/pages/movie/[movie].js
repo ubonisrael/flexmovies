@@ -2,6 +2,7 @@ import { Moviepage } from "@/components/moviepage";
 import React from "react";
 
 export default function MoviePage({ movie, casts, recommendations }) {
+  console.log(movie);
   recommendations.results.forEach((dat) => dat.media = 'movie')
   return (
       <Moviepage item={movie} casts={casts} rec={recommendations} />

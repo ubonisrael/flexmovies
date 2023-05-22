@@ -8,10 +8,13 @@ import { useWatchContext } from "@/context/WatchListContext";
 import {List} from "@/lib/addToList";
 import { CheckUser } from "@/lib/checkuser";
 import { useAuth } from "@/context/AuthUserContext";
+import { useRouter } from "next/router";
 
 export const Card = ({ item }) => {
   
   const {user} = useAuth()
+
+  const router = useRouter()
 
   const fav = useFavContext()
   const watch = useWatchContext()
