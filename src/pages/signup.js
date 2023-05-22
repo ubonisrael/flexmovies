@@ -54,11 +54,16 @@ export default function SignUpPage() {
     const { error } = await signUp(email, password.trim());
 
     if (error) {
-      //use toastify to alert user login attempt has failed
-      toast.error(`Error during sign up. Please try again later. `, {
-        position: toast.POSITION.TOP_CENTER,
-      });
-      console.log(error.message);
+      //use toastify to alert user sign up attempt has failed
+      if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
+        toast.error('Email already in use!!!', {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      } else {
+        toast.error(`Error during sign up. Please try again later. `, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      }
       // then return
       return;
     }
