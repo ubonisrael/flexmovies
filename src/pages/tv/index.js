@@ -5,10 +5,9 @@ import {
   tPopular,
   tTopRated,
 } from "@/utils/fetch";
+import { getPlaiceholder } from "plaiceholder";
 
-export default function TvShows({ data }) {
-
-  return (
+const TvShows = ({ data }) => (
     <>
       <Collection data={data.tvPopular.results} type={"popular TV shows"} linkPath='tv/popular/1' />
       <Collection data={data.tvTopRated.results} type={"top rated TV shows"} linkPath='tv/rated/1' />
@@ -16,7 +15,8 @@ export default function TvShows({ data }) {
       <Collection data={data.tvAiringToday.results} type={"TV airing today"} linkPath='tv/today/1' />
     </>
   );
-}
+
+export default TvShows
 
 export async function getServerSideProps(context) {
   const [
@@ -32,16 +32,43 @@ export async function getServerSideProps(context) {
   ]);
 
   //tv shows
-  tvPopular.results.forEach((dat) => (dat.media = "tv"));
-  tvTopRated.results.forEach((dat) => (dat.media = "tv"));
-  tvOnTheAir.results.forEach((dat) => (dat.media = "tv"));
-  tvAiringToday.results.forEach((dat) => (dat.media = "tv"));
+  const tpResults = tvPopular.results.map(async(data) => {
+    data.media = 'tv'
+    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
+    return {...data, img, svg}
+  })
+
+  const tp = await Promise.all(tpResults)
+
+  const ttrResults = tvTopRated.results.map(async(data) => {
+    data.media = 'tv'
+    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
+    return {...data, img, svg}
+  })
+
+  const ttr = await Promise.all(ttrResults)
+
+  const totaResults = tvOnTheAir.results.map(async(data) => {
+    data.media = 'tv'
+    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
+    return {...data, img, svg}
+  })
+
+  const tota = await Promise.all(totaResults)
+
+  const tatResults = tvAiringToday.results.map(async(data) => {
+    data.media = 'tv'
+    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
+    return {...data, img, svg}
+  })
+
+  const tat = await Promise.all(tatResults)
 
   const data = {
-    tvPopular,
-    tvTopRated,
-    tvOnTheAir,
-    tvAiringToday,
+    tvPopular: {...tvPopular, results: tp},
+    tvTopRated: {...tvTopRated, results: ttr},
+    tvOnTheAir: {...tvOnTheAir, results: tota},
+    tvAiringToday: {...tvAiringToday, results: tat},
   };
 
   return {

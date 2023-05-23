@@ -3,12 +3,8 @@ import {
   fetchTrendingDay,
   fetchTrendingWeek,
   mNowPlaying,
-  mPopular,
   mTopRated,
-  mUpcoming,
   tAiringToday,
-  tOnTheAir,
-  tPopular,
   tTopRated,
 } from "@/utils/fetch";
 import Head from "next/head";
@@ -32,23 +28,15 @@ export async function getServerSideProps(context) {
     trendDay,
     trendWeek,
     moviesNowPlaying,
-    moviesPopular,
     moviesTopRated,
-    moviesUpcoming,
-    tvPopular,
     tvTopRated,
-    tvOnTheAir,
     tvAiringToday,
   ] = await Promise.all([
     fetchTrendingDay("1", process.env.NEXT_PUBLIC_TMDB_API_KEY),
     fetchTrendingWeek("1", process.env.NEXT_PUBLIC_TMDB_API_KEY),
     mNowPlaying(process.env.NEXT_PUBLIC_TMDB_API_KEY),
-    mPopular(process.env.NEXT_PUBLIC_TMDB_API_KEY),
     mTopRated(process.env.NEXT_PUBLIC_TMDB_API_KEY),
-    mUpcoming(process.env.NEXT_PUBLIC_TMDB_API_KEY),
-    tPopular(process.env.NEXT_PUBLIC_TMDB_API_KEY),
     tTopRated(process.env.NEXT_PUBLIC_TMDB_API_KEY),
-    tOnTheAir(process.env.NEXT_PUBLIC_TMDB_API_KEY),
     tAiringToday(process.env.NEXT_PUBLIC_TMDB_API_KEY),
   ]);
 
@@ -76,14 +64,6 @@ export async function getServerSideProps(context) {
 
   const mnpr = await Promise.all(mnpResults)
 
-  const mpResults = moviesPopular.results.map(async(data) => {
-    data.media = 'movie'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
-
-  const mpr = await Promise.all(mpResults)
-
   const mtResults = moviesTopRated.results.map(async(data) => {
     data.media = 'movie'
     const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
@@ -92,22 +72,6 @@ export async function getServerSideProps(context) {
 
   const mtr = await Promise.all(mtResults)
 
-  const mupResults = moviesUpcoming.results.map(async(data) => {
-    data.media = 'movie'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
-
-  const mup = await Promise.all(mupResults)
-
-  //tv shows
-  const tpResults = tvPopular.results.map(async(data) => {
-    data.media = 'tv'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
-
-  const tp = await Promise.all(tpResults)
 
   const ttrResults = tvTopRated.results.map(async(data) => {
     data.media = 'tv'
@@ -116,14 +80,6 @@ export async function getServerSideProps(context) {
   })
 
   const ttr = await Promise.all(ttrResults)
-
-  const totaResults = tvOnTheAir.results.map(async(data) => {
-    data.media = 'tv'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
-
-  const tota = await Promise.all(totaResults)
 
   const tatResults = tvAiringToday.results.map(async(data) => {
     data.media = 'tv'
@@ -137,12 +93,8 @@ export async function getServerSideProps(context) {
     trendDay: {...trendDay, results: ftd},
     trendWeek: {...trendWeek, results: ftw},
     moviesNowPlaying: {...moviesNowPlaying, results: mnpr},
-    moviesPopular: {...moviesPopular, results: mpr},
     moviesTopRated: {...moviesTopRated, results: mtr},
-    moviesUpcoming: {...moviesUpcoming, results: mup},
-    tvPopular: {...tvPopular, results: tp},
     tvTopRated: {...tvTopRated, results: ttr},
-    tvOnTheAir: {...tvOnTheAir, results: tota},
     tvAiringToday: {...tvAiringToday, results: tat},
   };
 

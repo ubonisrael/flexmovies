@@ -1,5 +1,6 @@
 import { Collection } from "@/components/collection";
 import { mNowPlaying, mPopular, mTopRated, mUpcoming } from "@/utils/fetch";
+import { getPlaiceholder } from "plaiceholder";
 
 const Movies = ({ data }) => (
   <>
@@ -38,16 +39,43 @@ export async function getServerSideProps(context) {
     ]);
 
   //movies
-  moviesNowPlaying.results.forEach((dat) => (dat.media = "movie"));
-  moviesPopular.results.forEach((dat) => (dat.media = "movie"));
-  moviesTopRated.results.forEach((dat) => (dat.media = "movie"));
-  moviesUpcoming.results.forEach((dat) => (dat.media = "movie"));
+  const mnpResults = moviesNowPlaying.results.map(async(data) => {
+    data.media = 'movie'
+    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
+    return {...data, img, svg}
+  })
+
+  const mnpr = await Promise.all(mnpResults)
+
+  const mpResults = moviesPopular.results.map(async(data) => {
+    data.media = 'movie'
+    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
+    return {...data, img, svg}
+  })
+
+  const mpr = await Promise.all(mpResults)
+
+  const mtResults = moviesTopRated.results.map(async(data) => {
+    data.media = 'movie'
+    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
+    return {...data, img, svg}
+  })
+
+  const mtr = await Promise.all(mtResults)
+
+  const mupResults = moviesUpcoming.results.map(async(data) => {
+    data.media = 'movie'
+    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
+    return {...data, img, svg}
+  })
+
+  const mup = await Promise.all(mupResults)
 
   const data = {
-    moviesNowPlaying,
-    moviesPopular,
-    moviesTopRated,
-    moviesUpcoming,
+    moviesNowPlaying: {...moviesNowPlaying, results: mnpr},
+    moviesPopular: {...moviesPopular, results: mpr},
+    moviesTopRated: {...moviesTopRated, results: mtr},
+    moviesUpcoming: {...moviesUpcoming, results: mup},
   };
 
   return {

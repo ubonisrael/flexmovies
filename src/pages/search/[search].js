@@ -2,6 +2,7 @@ import React from "react";
 import { DisplayPage } from "@/components/displaypage";
 import { Pagination } from "@/components/pagination";
 import { useRouter } from "next/router";
+import { getPlaiceholder } from "plaiceholder";
 
 export default function Search({ search, searchResult }) {
 
@@ -43,10 +44,19 @@ export async function getServerSideProps(context) {
   const searchResult = await fetch(
     `https://api.themoviedb.org/3/search/multi?query=${search}&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&page=${page}`
   ).then((res) => res.json());
+
+  const searchResults = searchResult.results.map(async(data) => {
+    data.media = 'movie'
+    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
+    return {...data, img, svg}
+  })
+
+  const newResults = await Promise.all(searchResults)
+
   return {
     props: {
       search,
-      searchResult,
+      searchResult: {...searchResult, results: newResults},
     },
   };
 }
