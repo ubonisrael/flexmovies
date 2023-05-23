@@ -1,18 +1,10 @@
 import { User } from "@/components/userpage";
-import { useAuth } from "@/context/AuthUserContext";
 import { useFavContext } from "@/context/FavouriteContext";
 import { useWatchContext } from "@/context/WatchListContext";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import React from "react";
 
 export default function UserPage() {
-  const { user } = useAuth();
-  const router = useRouter()
-
-  if (!user) {
-    router.push('/login')
-  }
 
   const fav = useFavContext();
 

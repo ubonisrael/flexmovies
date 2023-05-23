@@ -50,11 +50,11 @@ export const Navbar = ({nav, toggleNav}) => {
           <p className={styles.links}>TV</p>
         </Link>
         </li>
-        <li onClick={toggleNav}>
+        {user ? <li onClick={toggleNav}>
           <Link href="/user">
           <p className={styles.links}>My Page</p>
         </Link>
-        </li>
+        </li>: null}
       </ul>
     </div>
   );
