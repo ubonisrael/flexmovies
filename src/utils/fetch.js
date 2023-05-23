@@ -1,36 +1,29 @@
+
 //fetch movie, cast and recommendations
 export async function fetchMovie(movieId, apikey) {
     const movie = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apikey}&language=en-US`
-    ).json()
+    ).then((res) => res.json());
     return movie
 }
 export async function fetchMovieCast(movieId, apikey) {
-    const movieCast = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apikey}&language=en-US`
-    ).json()
+    const movieCast = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apikey}&language=en-US`
+    ).then((res) => res.json());
     return movieCast
 }
-export async function fetchMovieRecommendations(movieId, apikey) {
-    const movieRecommendations = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apikey}&language=en-US`
-    ).json()
-    return movieRecommendations
-}
+
 
 //fetch tv, cast and recommendations
 export async function fetchTv(tvId, apikey) {
     const tv = await fetch(`https://api.themoviedb.org/3/tv/${tvId}?api_key=${apikey}&language=en-US`
-    ).json()
+    ).then((res) => res.json());
     return tv
 }
 export async function fetchTvCast(tvId, apikey) {
-    const tvCast = await fetch(`https://api.themoviedb.org/3/tv/${tvId}?api_key=${apikey}&language=en-US`
-    ).json()
+    const tvCast = await fetch(`https://api.themoviedb.org/3/tv/${tvId}/credits?api_key=${apikey}&language=en-US`
+    ).then((res) => res.json());
     return tvCast
 }
-export async function fetchTvRecommendations(tvId, apikey) {
-    const tvRecommendations = await fetch(`https://api.themoviedb.org/3/tv/${tvId}?api_key=${apikey}&language=en-US`
-    ).json()
-    return tvRecommendations
-}
+
 
 //fetch trending movies and tv shows, day and week
 export async function fetchTrendingDay(page = '1', apikey) {
@@ -49,83 +42,84 @@ export async function fetchTrendingWeek(page = '1', apikey) {
 
 //fetch data for home page
 export async function mNowPlaying(apikey) {
-    const moviesNowPlaying = fetch(
+    const moviesNowPlaying = await fetch(
       `https://api.themoviedb.org/3/movie/now_playing?api_key=${apikey}&language=en-US&page=1`
     ).then((res) => res.json());
+    
     return moviesNowPlaying
 }
 export async function mPopular(apikey) {
-    const moviesPopular = fetch(
+    const moviesPopular = await fetch(
         `https://api.themoviedb.org/3/movie/popular?api_key=${apikey}&language=en-US&page=1`
-      ).then((res) => res.json());
+      ).then((res) => res.json())
     return moviesPopular
 }
 
 export async function mTopRated(apikey) {
-    const moviesTopRated = fetch(
+    const moviesTopRated = await fetch(
         `https://api.themoviedb.org/3/movie/top_rated?api_key=${apikey}&language=en-US&page=1`
       ).then((res) => res.json());
     return moviesTopRated
 }
 
 export async function mUpcoming(apikey) {
-    const moviesUpcoming = fetch(
+    const moviesUpcoming = await fetch(
       `https://api.themoviedb.org/3/movie/upcoming?api_key=${apikey}&language=en-US&page=1`
     ).then((res) => res.json());
     return moviesUpcoming
 }
 
 export async function mTrendingDay(apikey) {
-    const moviesTrendingDay = fetch(
+    const moviesTrendingDay = await fetch(
         `https://api.themoviedb.org/3/trending/movie/day?&api_key=${apikey}&language=en-US&page=1`
       ).then((res) => res.json());
     return moviesTrendingDay
 }
 
 export async function mTrendingWeek(apikey) {
-    const moviesTrendingWeek = fetch(
+    const moviesTrendingWeek = await fetch(
         `https://api.themoviedb.org/3/trending/movie/week?&api_key=${apikey}&language=en-US&page=1`
       ).then((res) => res.json());
     return moviesTrendingWeek
 }
 
 export async function tPopular(apikey) {
-    const tvPopular = fetch(
+    const tvPopular = await fetch(
         `https://api.themoviedb.org/3/tv/popular?api_key=${apikey}&language=en-US&page=1`
       ).then((res) => res.json());
     return tvPopular
 }
 
 export async function tTopRated(apikey) {
-    const tvTopRated = fetch(
+    const tvTopRated = await fetch(
         `https://api.themoviedb.org/3/tv/top_rated?api_key=${apikey}&language=en-US&page=1`
       ).then((res) => res.json());
     return tvTopRated
 }
 
 export async function tOnTheAir(apikey) {
-    const tvOnTheAir = fetch(
+    const tvOnTheAir = await fetch(
         `https://api.themoviedb.org/3/tv/on_the_air?api_key=${apikey}&language=en-US&page=1`
       ).then((res) => res.json());
     return tvOnTheAir
 }
 
 export async function tAiringToday(apikey) {
-    const tvAiringToday = fetch(
+    const tvAiringToday = await fetch(
         `https://api.themoviedb.org/3/tv/airing_today?api_key=${apikey}&language=en-US&page=1`
       ).then((res) => res.json());
     return tvAiringToday
 }
 
 export async function tTrendingDay(apikey) {
-    const tvTrendingDay = fetch(
+    const tvTrendingDay = await fetch(
         `https://api.themoviedb.org/3/trending/tv/day?&api_key=${apikey}&language=en-US&page=1`
       ).then((res) => res.json());
     return tvTrendingDay
 }
 
 export async function tTrendingWeek(apikey) {
-    const tvTrendingWeek = fetch(
+    const tvTrendingWeek = await fetch(
         `https://api.themoviedb.org/3/trending/tv/week?&api_key=${apikey}&language=en-US&page=1`
       ).then((res) => res.json());
       return tvTrendingWeek

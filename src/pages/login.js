@@ -97,7 +97,7 @@ export default function LoginPage() {
             </button>
             <p>
               
-              <Link href="/email_reset" className={styles.link}>Forgot Password?</Link>
+              <Link href="/emailSreset" className={styles.link}>Forgot Password?</Link>
             </p>
             <p>
               Do not have an account?{" "}

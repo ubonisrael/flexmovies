@@ -7,15 +7,11 @@ import {
   mNowPlaying,
   mPopular,
   mTopRated,
-  mTrendingDay,
-  mTrendingWeek,
   mUpcoming,
   tAiringToday,
   tOnTheAir,
   tPopular,
   tTopRated,
-  tTrendingDay,
-  tTrendingWeek,
 } from "@/utils/fetch";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -43,14 +39,10 @@ App.getInitialProps = async ({ Component, ctx }) => {
         moviesPopular,
         moviesTopRated,
         moviesUpcoming,
-        moviesTrendingDay,
-        moviesTrendingWeek,
         tvPopular,
         tvTopRated,
         tvOnTheAir,
         tvAiringToday,
-        tvTrendingDay,
-        tvTrendingWeek,
       ] = await Promise.all([
         fetchTrendingDay("1", process.env.NEXT_PUBLIC_TMDB_API_KEY),
         fetchTrendingWeek("1", process.env.NEXT_PUBLIC_TMDB_API_KEY),
@@ -58,14 +50,10 @@ App.getInitialProps = async ({ Component, ctx }) => {
         mPopular(process.env.NEXT_PUBLIC_TMDB_API_KEY),
         mTopRated(process.env.NEXT_PUBLIC_TMDB_API_KEY),
         mUpcoming(process.env.NEXT_PUBLIC_TMDB_API_KEY),
-        mTrendingDay(process.env.NEXT_PUBLIC_TMDB_API_KEY),
-        mTrendingWeek(process.env.NEXT_PUBLIC_TMDB_API_KEY),
         tPopular(process.env.NEXT_PUBLIC_TMDB_API_KEY),
         tTopRated(process.env.NEXT_PUBLIC_TMDB_API_KEY),
         tOnTheAir(process.env.NEXT_PUBLIC_TMDB_API_KEY),
         tAiringToday(process.env.NEXT_PUBLIC_TMDB_API_KEY),
-        tTrendingDay(process.env.NEXT_PUBLIC_TMDB_API_KEY),
-        tTrendingWeek(process.env.NEXT_PUBLIC_TMDB_API_KEY),
       ]);
 
       //movies
@@ -73,15 +61,11 @@ App.getInitialProps = async ({ Component, ctx }) => {
       moviesPopular.results.forEach((dat) => (dat.media = "movie"));
       moviesTopRated.results.forEach((dat) => (dat.media = "movie"));
       moviesUpcoming.results.forEach((dat) => (dat.media = "movie"));
-      moviesTrendingDay.results.forEach((dat) => (dat.media = "movie"));
-      moviesTrendingWeek.results.forEach((dat) => (dat.media = "movie"));
       //tv shows
       tvPopular.results.forEach((dat) => (dat.media = "tv"));
       tvTopRated.results.forEach((dat) => (dat.media = "tv"));
       tvOnTheAir.results.forEach((dat) => (dat.media = "tv"));
       tvAiringToday.results.forEach((dat) => (dat.media = "tv"));
-      tvTrendingDay.results.forEach((dat) => (dat.media = "tv"));
-      tvTrendingWeek.results.forEach((dat) => (dat.media = "tv"));
 
       const data = {
         trendDay,
@@ -90,14 +74,10 @@ App.getInitialProps = async ({ Component, ctx }) => {
         moviesPopular,
         moviesTopRated,
         moviesUpcoming,
-        moviesTrendingDay,
-        moviesTrendingWeek,
         tvPopular,
         tvTopRated,
         tvOnTheAir,
         tvAiringToday,
-        tvTrendingDay,
-        tvTrendingWeek,
       };
 
       let pageProps = {};

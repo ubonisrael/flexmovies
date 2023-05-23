@@ -1,34 +1,27 @@
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
 import { Moviepage } from "@/components/moviepage";
-import { Navbar } from "@/components/navbar";
+import { fetchTv, fetchTvCast } from "@/utils/fetch";
+import { getPlaiceholder } from "plaiceholder";
 import React from "react";
 
-export default function MoviePage({ show, casts, recommendations }) {
-    recommendations.results.forEach((dat) => dat.media = 'tv')
-  return (
+const TvPage = ({ show, showCasts, svg, img }) => (
     <>
-      <Moviepage item={show} casts={casts} rec={recommendations} />
+      <Moviepage item={show} casts={showCasts} svg={svg} img={img}/>
     </>
   );
-}
+
+export default TvPage
 
 export async function getServerSideProps(context) {
   const showId = context.query.tv
-  const show = await fetch(
-    `https://api.themoviedb.org/3/tv/${showId}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
-  ).then((res) => res.json());
-  const casts = await fetch(
-    `https://api.themoviedb.org/3/tv/${showId}/credits?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
-  ).then((res) => res.json());
-  const recommendations = await fetch(
-    `https://api.themoviedb.org/3/tv/${showId}/recommendations?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
-  ).then((res) => res.json());
+  const [show, showCasts] = await Promise.all([fetchTv(showId, process.env.NEXT_PUBLIC_TMDB_API_KEY), fetchTvCast(showId, process.env.NEXT_PUBLIC_TMDB_API_KEY)])
+  const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${show.poster_path}`)
+
   return {
     props: {
       show,
-      casts,
-      recommendations
+      showCasts,
+      img,
+      svg
     },
   };
 }

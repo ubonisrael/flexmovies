@@ -1,7 +1,5 @@
 import React from "react";
-import Image from "next/image";
 import styles from "@/styles/Moviepage.module.scss";
-import { Collection } from "./collection";
 import Link from "next/link";
 import { MdFavorite, MdFavoriteBorder, MdOutlinePlaylistAdd, MdOutlinePlaylistAddCheck } from "react-icons/md";
 import { CheckList } from "@/lib/checkList";
@@ -10,8 +8,9 @@ import { useWatchContext } from "@/context/WatchListContext";
 import { List } from "@/lib/addToList";
 import { CheckUser } from "@/lib/checkuser";
 import { useAuth } from "@/context/AuthUserContext";
+import { Placeholder } from "./placeholder";
 
-export const Moviepage = ({ item, casts, rec }) => {
+export const Moviepage = ({ item, casts, img, svg }) => {
 
   const {user} = useAuth
 
@@ -40,12 +39,6 @@ export const Moviepage = ({ item, casts, rec }) => {
     CheckUser()
   }
 
-  const divStyle = {
-    borderRadius: "16px",
-  };
-
-  const imagePath = `https://image.tmdb.org/t/p/original/${item.poster_path}`;
-
   const style = { fontSize: "1.5rem" }
 
   return (
@@ -54,15 +47,7 @@ export const Moviepage = ({ item, casts, rec }) => {
       <section className={styles.movie_info}>
         <article>
           <div className={styles.imageContainer}>
-            <Image
-              src={imagePath}
-              alt={item.title ? item.title : item.name}
-              style={divStyle}
-              fill
-              sizes="(max-width: 600px) 100vw,
-              (max-width: 400px) 50vw,
-              (max-width: 200px) 33vw"
-            />
+            <Placeholder svg={svg} img={img} blur={4} />
           </div>
           <Link href={item.homepage} className={styles.visit}>
             <div>Visit HomePage</div>
@@ -143,11 +128,6 @@ export const Moviepage = ({ item, casts, rec }) => {
           </article>
         </article>
       </section>
-      {rec.results.length ? (
-        <section>
-          <Collection data={rec.results} type={"Recommendations"} rec={true} />
-        </section>
-      ) : null}
     </>
   );
 };

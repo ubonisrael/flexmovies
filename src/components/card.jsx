@@ -9,6 +9,7 @@ import {List} from "@/lib/addToList";
 import { CheckUser } from "@/lib/checkuser";
 import { useAuth } from "@/context/AuthUserContext";
 import { useRouter } from "next/router";
+import { Placeholder } from "./placeholder";
 
 export const Card = ({ item }) => {
   
@@ -51,21 +52,11 @@ export const Card = ({ item }) => {
     borderRadius: "16px",
   };
   
-  const imagePath = `https://image.tmdb.org/t/p/original/${item.poster_path}`;
-
   return (
     <article className={styles.card}>
       <div>
         <div className={styles.imageContainer}>
-          <Image
-            src={imagePath}
-            alt={item.title ? item.title : item.name}
-            style={divStyle}
-            fill
-            sizes="(max-width: 400px) 100vw,
-              (max-width: 300px) 50vw,
-              (max-width: 200px) 33vw"
-          />
+          <Placeholder svg={item.svg} img={item.img} blur={4} />
           <div className={styles.overlay_rating}>
             <p>{item.vote_average.toFixed(1)}</p>
           </div>

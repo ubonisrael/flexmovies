@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "13.1.6",
+    "@plaiceholder/next": "^2.5.0",
     "@popperjs/core": "^2.11.6",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",

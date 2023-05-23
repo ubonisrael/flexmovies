@@ -1,6 +1,3 @@
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-import { Navbar } from "@/components/navbar";
 import { User } from "@/components/userpage";
 import { useAuth } from "@/context/AuthUserContext";
 import { useFavContext } from "@/context/FavouriteContext";
