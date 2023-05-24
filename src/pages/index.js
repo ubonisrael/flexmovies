@@ -10,8 +10,8 @@ import {
 import Head from "next/head";
 import { getPlaiceholder } from "plaiceholder";
 
-const Home = ({ allResults }) => {
-  console.log(allResults);
+const Home = ({ data }) => {
+  console.log(data);
   return (
     <>
       <Head>
@@ -43,48 +43,46 @@ export async function getServerSideProps(context) {
   ]);
 
 
-  const ftdResults = trendDay.results.map(async(data) => {
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
+  // const ftdResults = trendDay.results.map(async(data) => {
+  //   const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
+  //   return {...data, img, svg}
+  // })
 
   
-  const ftwResults = trendWeek.results.map(async(data) => {
-    data.media = 'movie'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
+  // const ftwResults = trendWeek.results.map(async(data) => {
+  //   data.media = 'movie'
+  //   const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
+  //   return {...data, img, svg}
+  // })
 
   
-  const mnpResults = moviesNowPlaying.results.map(async(data) => {
-    data.media = 'movie'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
+  // const mnpResults = moviesNowPlaying.results.map(async(data) => {
+  //   data.media = 'movie'
+  //   const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
+  //   return {...data, img, svg}
+  // })
 
   
-  const mtResults = moviesTopRated.results.map(async(data) => {
-    data.media = 'movie'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
+  // const mtResults = moviesTopRated.results.map(async(data) => {
+  //   data.media = 'movie'
+  //   const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
+  //   return {...data, img, svg}
+  // })
   
   
   
-  const ttrResults = tvTopRated.results.map(async(data) => {
-    data.media = 'tv'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
+  // const ttrResults = tvTopRated.results.map(async(data) => {
+  //   data.media = 'tv'
+  //   const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
+  //   return {...data, img, svg}
+  // })
   
   
-  const tatResults = tvAiringToday.results.map(async(data) => {
-    data.media = 'tv'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
-
-  const allResults = await Promise.all([...ftwResults, ...ftdResults, ...mtResults, ...mnpResults, ...tatResults, ...ttrResults])
+  // const tatResults = tvAiringToday.results.map(async(data) => {
+  //   data.media = 'tv'
+  //   const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
+  //   return {...data, img, svg}
+  // })
   
   // const ftw = await Promise.all(ftwResults)
   // const ftd = await Promise.all(ftdResults)
@@ -94,18 +92,24 @@ export async function getServerSideProps(context) {
   // const ttr = await Promise.all(ttrResults)
   
   const data = {
-    // trendDay: {...trendDay, results: ftd},
+    trendDay,
+    trendWeek,
+    moviesNowPlaying,
+    moviesTopRated,
+    tvTopRated,
+    tvAiringToday,
+  };
+
+  return {
+    props: {
+      data,
+    },
+  };
+}
+
+// trendDay: {...trendDay, results: ftd},
     // trendWeek: {...trendWeek, results: ftw},
     // moviesNowPlaying: {...moviesNowPlaying, results: mnpr},
     // moviesTopRated: {...moviesTopRated, results: mtr},
     // tvTopRated: {...tvTopRated, results: ttr},
     // tvAiringToday: {...tvAiringToday, results: tat},
-  };
-
-  return {
-    props: {
-      // data,
-      allResults
-    },
-  };
-}
