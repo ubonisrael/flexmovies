@@ -5,7 +5,6 @@ import {
   tPopular,
   tTopRated,
 } from "@/utils/fetch";
-import { getPlaiceholder } from "plaiceholder";
 
 const TvShows = ({ data }) => (
     <>
@@ -31,44 +30,12 @@ export async function getServerSideProps(context) {
     tAiringToday(process.env.NEXT_PUBLIC_TMDB_API_KEY),
   ]);
 
-  //tv shows
-  const tpResults = tvPopular.results.map(async(data) => {
-    data.media = 'tv'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
-
-  const tp = await Promise.all(tpResults)
-
-  const ttrResults = tvTopRated.results.map(async(data) => {
-    data.media = 'tv'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
-
-  const ttr = await Promise.all(ttrResults)
-
-  const totaResults = tvOnTheAir.results.map(async(data) => {
-    data.media = 'tv'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
-
-  const tota = await Promise.all(totaResults)
-
-  const tatResults = tvAiringToday.results.map(async(data) => {
-    data.media = 'tv'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
-
-  const tat = await Promise.all(tatResults)
 
   const data = {
-    tvPopular: {...tvPopular, results: tp},
-    tvTopRated: {...tvTopRated, results: ttr},
-    tvOnTheAir: {...tvOnTheAir, results: tota},
-    tvAiringToday: {...tvAiringToday, results: tat},
+    tvPopular,
+    tvTopRated,
+    tvOnTheAir,
+    tvAiringToday,
   };
 
   return {

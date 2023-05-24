@@ -33,7 +33,6 @@ export async function fetchTrendingDay(page = '1', apikey) {
       ).then((res) => res.json()).then(async(data) => {
       const {results} = data
       const newResPromises = results.map(async(data) => {
-        data.media = 'movie'
         const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
         return {...data, img, svg}
       })
@@ -48,7 +47,6 @@ export async function fetchTrendingWeek(page = '1', apikey) {
       ).then((res) => res.json()).then(async(data) => {
       const {results} = data
       const newResPromises = results.map(async(data) => {
-        data.media = 'movie'
         const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
         return {...data, img, svg}
       })
@@ -162,7 +160,7 @@ export async function tPopular(apikey) {
       ).then((res) => res.json()).then(async(data) => {
       const {results} = data
       const newResPromises = results.map(async(data) => {
-        data.media = 'movie'
+        data.media = 'tv'
         const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
         return {...data, img, svg}
       })
@@ -178,7 +176,7 @@ export async function tTopRated(apikey) {
       ).then((res) => res.json()).then(async(data) => {
       const {results} = data
       const newResPromises = results.map(async(data) => {
-        data.media = 'movie'
+        data.media = 'tv'
         const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
         return {...data, img, svg}
       })
@@ -194,7 +192,7 @@ export async function tOnTheAir(apikey) {
       ).then((res) => res.json()).then(async(data) => {
       const {results} = data
       const newResPromises = results.map(async(data) => {
-        data.media = 'movie'
+        data.media = 'tv'
         const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
         return {...data, img, svg}
       })
@@ -210,7 +208,7 @@ export async function tAiringToday(apikey) {
       ).then((res) => res.json()).then(async(data) => {
       const {results} = data
       const newResPromises = results.map(async(data) => {
-        data.media = 'movie'
+        data.media = 'tv'
         const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
         return {...data, img, svg}
       })
@@ -226,7 +224,7 @@ export async function tTrendingDay(apikey) {
       ).then((res) => res.json()).then(async(data) => {
       const {results} = data
       const newResPromises = results.map(async(data) => {
-        data.media = 'movie'
+        data.media = 'tv'
         const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
         return {...data, img, svg}
       })
@@ -242,7 +240,7 @@ export async function tTrendingWeek(apikey) {
       ).then((res) => res.json()).then(async(data) => {
       const {results} = data
       const newResPromises = results.map(async(data) => {
-        data.media = 'movie'
+        data.media = 'tv'
         const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
         return {...data, img, svg}
       })

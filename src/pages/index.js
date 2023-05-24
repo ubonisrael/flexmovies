@@ -28,27 +28,27 @@ export async function getServerSideProps(context) {
   const [
     trendDay,
     trendWeek,
-    moviesNowPlaying,
-    moviesTopRated,
-    tvTopRated,
-    tvAiringToday,
+    // moviesNowPlaying,
+    // moviesTopRated,
+    // tvTopRated,
+    // tvAiringToday,
   ] = await Promise.all([
     fetchTrendingDay("1", process.env.NEXT_PUBLIC_TMDB_API_KEY),
     fetchTrendingWeek("1", process.env.NEXT_PUBLIC_TMDB_API_KEY),
-    mNowPlaying(process.env.NEXT_PUBLIC_TMDB_API_KEY),
-    mTopRated(process.env.NEXT_PUBLIC_TMDB_API_KEY),
-    tTopRated(process.env.NEXT_PUBLIC_TMDB_API_KEY),
-    tAiringToday(process.env.NEXT_PUBLIC_TMDB_API_KEY),
+    // mNowPlaying(process.env.NEXT_PUBLIC_TMDB_API_KEY),
+    // mTopRated(process.env.NEXT_PUBLIC_TMDB_API_KEY),
+    // tTopRated(process.env.NEXT_PUBLIC_TMDB_API_KEY),
+    // tAiringToday(process.env.NEXT_PUBLIC_TMDB_API_KEY),
   ]);
 
 
   const data = {
     trendDay,
     trendWeek,
-    moviesNowPlaying,
-    moviesTopRated,
-    tvTopRated,
-    tvAiringToday,
+    // moviesNowPlaying,
+    // moviesTopRated,
+    // tvTopRated,
+    // tvAiringToday,
   };
 
   return {
