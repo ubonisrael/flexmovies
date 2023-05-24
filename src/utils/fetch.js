@@ -1,3 +1,4 @@
+import { getPlaiceholder } from "plaiceholder";
 
 //fetch movie, cast and recommendations
 export async function fetchMovie(movieId, apikey) {
@@ -44,7 +45,16 @@ export async function fetchTrendingWeek(page = '1', apikey) {
 export async function mNowPlaying(apikey) {
     const moviesNowPlaying = await fetch(
       `https://api.themoviedb.org/3/movie/now_playing?api_key=${apikey}&language=en-US&page=1`
-    ).then((res) => res.json());
+    ).then((res) => res.json()).then(async(data) => {
+      const {results} = data
+      const newResPromises = results.map(async(data) => {
+        data.media = 'movie'
+        const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
+        return {...data, img, svg}
+      })
+      const newResults = await Promise.all(newResPromises)
+      return {...data, newResults}
+    });
     
     return moviesNowPlaying
 }

@@ -8,7 +8,6 @@ import {
   tTopRated,
 } from "@/utils/fetch";
 import Head from "next/head";
-import { getPlaiceholder } from "plaiceholder";
 
 const Home = ({ data }) => {
   console.log(data);
@@ -43,54 +42,6 @@ export async function getServerSideProps(context) {
   ]);
 
 
-  const ftdResults = trendDay.results.map(async(data) => {
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
-
-  
-  const ftwResults = trendWeek.results.map(async(data) => {
-    data.media = 'movie'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
-
-  
-  const mnpResults = moviesNowPlaying.results.map(async(data) => {
-    data.media = 'movie'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
-
-  
-  const mtResults = moviesTopRated.results.map(async(data) => {
-    data.media = 'movie'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
-  
-  
-  
-  const ttrResults = tvTopRated.results.map(async(data) => {
-    data.media = 'tv'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
-  
-  
-  const tatResults = tvAiringToday.results.map(async(data) => {
-    data.media = 'tv'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
-  
-  // const ftw = await Promise.all(ftwResults)
-  // const ftd = await Promise.all(ftdResults)
-  // const mtr = await Promise.all(mtResults)
-  // const mnpr = await Promise.all(mnpResults)
-  // const tat = await Promise.all(tatResults)
-  // const ttr = await Promise.all(ttrResults)
-  
   const data = {
     trendDay,
     trendWeek,
@@ -107,9 +58,3 @@ export async function getServerSideProps(context) {
   };
 }
 
-// trendDay: {...trendDay, results: ftd},
-    // trendWeek: {...trendWeek, results: ftw},
-    // moviesNowPlaying: {...moviesNowPlaying, results: mnpr},
-    // moviesTopRated: {...moviesTopRated, results: mtr},
-    // tvTopRated: {...tvTopRated, results: ttr},
-    // tvAiringToday: {...tvAiringToday, results: tat},
