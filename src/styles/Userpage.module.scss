@@ -1,4 +1,8 @@
 .userpage {
     width: 100%;
     min-height: calc(100vh - 4.5rem);
+
+    @media screen and (min-width: 768px) {
+        margin-left: 5rem;
+    }
 }

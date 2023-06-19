@@ -1,81 +1,28 @@
-import { useEffect, useState } from "react";
 import { DisplayPage } from "@/components/displaypage";
-import { Pagination } from "@/components/pagination";
-import { Timewindow } from "@/components/timewindow";
-import { useRouter } from "next/router";
 
-export default function TrendingTV({ res }) {
-  const [checked, setChecked] = useState(false);
+export default function TrendingTV
+  ({
+    window,
+    pageType,
+    pageCat,
+    dataURL }) {
   
-  const router = useRouter();
+    return (
+        <DisplayPage title={'Trending TV Shows'} dataURL={dataURL} pageCat={pageCat} pageType={pageType} window={window} />  );
+  }
   
-  let pageNumber = Number(res.page);
-
-  const setCheckBox = () => {
-    setChecked((prev) => !prev);
-  };
-  
-  useEffect(() => {
-//when user switches between day or week, set window
-    const window = checked ? 'week' : 'day'
-
-    router.push({
-      pathname: `/tv/trending/${window}`,
-      query: { window, page: pageNumber },
-    });
-  
-  }, [checked])
-
-  const nextPage = () => {
-    pageNumber++;
-    const window = checked ? 'week' : 'day'
-    router.push({
-      pathname: `/tv/trending/${window}`,
-      query: { window, page: pageNumber },
-    });
-  };
-
-  const prevPage = () => {
-    pageNumber--;
-    const window = checked ? 'week' : 'day'
-    if (pageNumber < 2) return;
-    router.push({
-      pathname: `/tv/trending/${window}`,
-      query: { window, page: pageNumber },
-    });
-  };
-
-  return (
-    <>
-      <Timewindow checked={checked} setCheckBox={setCheckBox} />
-      <DisplayPage data={res.results} title={"Trending TV Shows"} />
-      <Pagination
-        page={res.page}
-        totalPages={res.total_pages}
-        nextPage={nextPage}
-        prevPage={prevPage}
-      />
-    </>
-  );
-}
-
-export async function getServerSideProps(context) {
-  const page = context.query.page ? context.query.page : "1";
-  const window = context.query.window ? context.query.window : "day";
-  const res = await fetch(
-    `https://api.themoviedb.org/3/trending/tv/${window}?&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&page=${page}`
-  ).then((res) => res.json());
-  
-  const resResults = res.results.map(async(data) => {
-    data.media = 'movie'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
-
-  const newResults = await Promise.all(resResults)
-  return {
-    props: {
-      res: {...res, results: newResults},
-    },
-  };
-}
+  export async function getServerSideProps(context) {
+    const pgNo = context.query.page ? context.query.page : "1";
+    const window = context.query.window ? context.query.window : "day";
+    const pageCat = 'tv'
+    const pageType = 'trending'
+    const dataURL = `https://api.themoviedb.org/3/trending/tv/${window}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&page=${pgNo}`
+    return {
+      props: {
+        window,
+        pageType,
+        pageCat,
+        dataURL
+      },
+    };
+  }

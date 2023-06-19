@@ -1,12 +1,24 @@
 .card {
-  width: 125px;
+  width: 150px;
+  height: 275px;
+  padding: 8px;
+  margin: 8px 0;
   display: grid;
   place-items: center;
+  background: rgb(4, 18, 31);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+
+  &:hover {
+    background: rgb(7, 26, 44);
+    transform: scale(1.05);
+  }
 }
 
 .imageContainer {
   position: relative;
-  width: 125px;
+  width: 144px;
   height: 150px;
 }
 
@@ -52,7 +64,6 @@
     margin: 0.5rem;
 
     :hover {
-      font-size: 2.5rem;
       color: red;
     }
   }
@@ -71,7 +82,7 @@
 
 @media screen and (min-width: 425px) {
   .card {
-    width: 150px;
+    width: 175px;
   }
   .imageContainer {
     width: 150px;
@@ -81,10 +92,22 @@
 
 @media screen and (min-width: 768px) {
   .card {
-    width: 200px;
+    width: 225px;
+    height: 350px;
   }
   .imageContainer {
     width: 200px;
-    height: 200px;
+    height: 250px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .card {
+    width: 275px;
+    height: 375px;
+  }
+  .imageContainer {
+    width: 250px;
+    height: 275px;
   }
 }

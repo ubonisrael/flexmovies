@@ -1,7 +1,7 @@
+import React from "react";
 import { Moviepage } from "@/components/moviepage";
 import { fetchMovie, fetchMovieCast } from "@/utils/fetch";
 import { getPlaiceholder } from "plaiceholder";
-import React from "react";
 
 const MoviePage = ({ movie, movieCast, img, svg}) =>  (
       <Moviepage item={movie} casts={movieCast} img={img} svg={svg} />

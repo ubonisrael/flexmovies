@@ -56,7 +56,7 @@ export default function LoginPage() {
       </Head>
       <main className={styles.login}>
         <article>
-          <h1>Flexmovies</h1>
+          {/* <h1>Flexmovies</h1> */}
           <form noValidate onSubmit={handleLogin}>
           <h3>Sign in</h3>
             <div>
@@ -97,7 +97,7 @@ export default function LoginPage() {
             </button>
             <p>
               
-              <Link href="/emailSreset" className={styles.link}>Forgot Password?</Link>
+              <Link href="/emailreset" className={styles.link}>Forgot Password?</Link>
             </p>
             <p>
               Do not have an account?{" "}

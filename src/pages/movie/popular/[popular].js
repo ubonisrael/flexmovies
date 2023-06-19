@@ -1,56 +1,27 @@
 import { DisplayPage } from "@/components/displaypage";
-import { Pagination } from "@/components/pagination";
-import { useRouter } from "next/router";
-import { getPlaiceholder } from "plaiceholder";
 
-const Popular = ({ res }) => {
-  const router = useRouter();
-  let pageNumber = Number(res.page);
+const Popular = ({ pageType,
+  pageCat,
+  dataURL }) => {
 
-  const nextPage = () => {
-    pageNumber++;
-    router.push(`/movie/popular/${pageNumber}`);
-  };
-
-  const prevPage = () => {
-    pageNumber--;
-    if (pageNumber < 2) return;
-    router.push(`/movie/popular/${pageNumber}`);
-  };
-
-  res.results.forEach((item) => (item.media = "movie"));
 
   return (
-    <>
-      <DisplayPage data={res.results} title={"Popular Movies"} />
-      <Pagination
-        page={res.page}
-        totalPages={res.total_pages}
-        nextPage={nextPage}
-        prevPage={prevPage}
-      />
-    </>
+      <DisplayPage title={'Popular Movies'} dataURL={dataURL} pageCat={pageCat} pageType={pageType}  />
   );
-}
+};
 
-export default Popular
+export default Popular;
 
 export async function getServerSideProps(context) {
-  const page = context.query.popular ? context.query.popular : "1";
-  const res = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?&api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&page=${page}`
-  ).then((res) => res.json());
-
-  const resResults = res.results.map(async(data) => {
-    data.media = 'movie'
-    const {img, svg} = await getPlaiceholder(`https://image.tmdb.org/t/p/original/${data.poster_path}`)
-    return {...data, img, svg}
-  })
-
-  const newResults = await Promise.all(resResults)
+  const pgNo = context.query.popular ? context.query.popular : '1'
+  const pageCat = 'movie'
+  const pageType = 'popular'
+  const dataURL = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&page=${pgNo}`
   return {
     props: {
-      res: {...res, results: newResults},
+      pageType,
+      pageCat,
+      dataURL
     },
   };
 }

@@ -1,7 +1,10 @@
 .display {
   width: 100vw;
   display: flex;
+  gap: 1rem;
   flex-direction: column;
+
+
 
   h2 {
     width: 100%;
@@ -11,8 +14,18 @@
 
   section {
     display: flex;
+    gap: 0.5rem;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+
+    @media screen and (min-width: 375px) {
+      gap: 1rem;
+    }
+
+    @media screen and (min-width: 768px) {
+      gap: 1.5rem;
+      padding-left: 4rem;
+    }
   }
 }

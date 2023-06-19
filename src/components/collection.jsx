@@ -3,17 +3,31 @@ import { Card } from "./card";
 import styles from "@/styles/Collection.module.scss";
 import Link from "next/link";
 import { Timewindow } from "./timewindow";
+import useSWR from 'swr'
+import { fetcher } from "@/utils/fetch";
+import { CollectionSkeleton } from "./collectionskeleton";
+
 
 export const Collection = ({
-  data,
   type,
   checked,
   setCheckBox,
-  rec,
+  dataURL,
   linkPath,
+  mediatype,
+  userlist
 }) => {
+
+  
+  const {data} = useSWR(dataURL, fetcher)
+  
+  if (!data && dataURL ) {
+    return <CollectionSkeleton />
+  }
+
+
   return (
-    <section className={styles.collection_container}>
+      <section className={styles.collection_container}>
       <article className={styles.collection_type}>
         {linkPath ? (
           <Link href={linkPath} className={styles.links}>
@@ -27,10 +41,14 @@ export const Collection = ({
         ) : null}
       </article>
       <section className={styles.collection}>
-        {data.map((item) => (
-          <Card key={item.id} item={item} rec={rec} />
-        ))}
+        {data ? data.results.map((item) => 
+          <Card key={item.id} item={item} mediatype={mediatype}/>
+        ): null}
+        {userlist ? userlist.map((item) => 
+          <Card key={item.id} item={item} mediatype={mediatype}/>
+        ): null}
       </section>
     </section>
   );
 };
+

@@ -1,7 +1,13 @@
 import React from "react";
 import styles from "@/styles/Moviepage.module.scss";
+import sty from "@/styles/homepage.module.scss";
 import Link from "next/link";
-import { MdFavorite, MdFavoriteBorder, MdOutlinePlaylistAdd, MdOutlinePlaylistAddCheck } from "react-icons/md";
+import {
+  MdFavorite,
+  MdFavoriteBorder,
+  MdOutlinePlaylistAdd,
+  MdOutlinePlaylistAddCheck,
+} from "react-icons/md";
 import { CheckList } from "@/lib/checkList";
 import { useFavContext } from "@/context/FavouriteContext";
 import { useWatchContext } from "@/context/WatchListContext";
@@ -11,38 +17,37 @@ import { useAuth } from "@/context/AuthUserContext";
 import { Placeholder } from "./placeholder";
 
 export const Moviepage = ({ item, casts, img, svg }) => {
+  const { user } = useAuth;
 
-  const {user} = useAuth
+  const fav = useFavContext();
+  const watch = useWatchContext();
 
-  const fav = useFavContext()
-  const watch = useWatchContext()
-
-  const checkedFave = CheckList(fav, item.id)
-  const checkedWList = CheckList(watch, item.id)
+  const checkedFave = CheckList(fav, item.id);
+  const checkedWList = CheckList(watch, item.id);
 
   const handleFav = (e) => {
-    e.stopPropagation()
+    e.stopPropagation();
 
     if (user) {
-      List(item, fav, user.uid, 'favorites')
-      return
+      List(item, fav, user.uid, "favorites");
+      return;
     }
-    CheckUser()
-  }
+    CheckUser();
+  };
   const handleWatchlist = (e) => {
-    e.stopPropagation()
+    e.stopPropagation();
 
     if (user) {
-      List(item, watch, user.uid, 'watchlist')
-      return
+      List(item, watch, user.uid, "watchlist");
+      return;
     }
-    CheckUser()
-  }
+    CheckUser();
+  };
 
-  const style = { fontSize: "1.5rem" }
+  const style = { fontSize: "1.5rem" };
 
   return (
-    <>
+    <main className={sty.main}>
       <h2 className={styles.title}>{item.title ? item.title : item.name}</h2>
       <section className={styles.movie_info}>
         <article>
@@ -102,10 +107,24 @@ export const Moviepage = ({ item, casts, img, svg }) => {
               </p>
             </div>
             <div>
-              <button className={styles.btn} onClick={handleFav} >Add To Favourites {checkedFave ? <MdFavorite style={style} /> : <MdFavoriteBorder style={style} />}</button>
+              <button className={styles.btn} onClick={handleFav}>
+                Add To Favourites{" "}
+                {checkedFave ? (
+                  <MdFavorite style={style} />
+                ) : (
+                  <MdFavoriteBorder style={style} />
+                )}
+              </button>
             </div>
             <div>
-              <button className={styles.btn} onClick={handleWatchlist} >Add to WatchList {checkedWList ? <MdOutlinePlaylistAddCheck style={style} /> : <MdOutlinePlaylistAdd style={style} />}</button>
+              <button className={styles.btn} onClick={handleWatchlist}>
+                Add to WatchList{" "}
+                {checkedWList ? (
+                  <MdOutlinePlaylistAddCheck style={style} />
+                ) : (
+                  <MdOutlinePlaylistAdd style={style} />
+                )}
+              </button>
             </div>
           </article>
           <div className={styles.underline}></div>
@@ -128,6 +147,6 @@ export const Moviepage = ({ item, casts, img, svg }) => {
           </article>
         </article>
       </section>
-    </>
+    </main>
   );
 };

@@ -1,0 +1,58 @@
+.container {
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  background-color: rgb(5, 21, 34);
+  margin-bottom: 1.5rem;
+}
+
+.type {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  width: 200px;
+  height: 3.5rem;
+  border-radius: 8px;
+  background-color: rgb(8, 29, 46);
+  margin-bottom: 10px;
+}
+
+.collection {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  width: 100%;
+  height: 14rem;
+  border-radius: 4px;
+  background-color: rgb(8, 29, 46);
+  margin-inline: auto;
+}
+
+.collection::after,
+.type::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+    90deg,
+    rgb(8, 29, 46),
+    rgb(5, 21, 34),
+    rgb(7, 27, 38)
+  );
+  transform: translateX(-100%);
+  animation-name: loading-skeleton;
+  animation-direction: normal;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes loading-skeleton {
+  100% {
+    transform: translateX(100%);
+  }
+}
