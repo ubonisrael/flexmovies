@@ -22,7 +22,7 @@
 
 body {
     --clr-text: rgb(222, 230, 236);
-    --clr-primarybg: rgb(165, 193, 197);
+    --clr-primarybg: rgb(20, 68, 95);
     --clr-secondarybg: rgb(205, 223, 226);
     --clr-tertiarybg: rgb(240, 243, 245);
     --clr-primary: rgb(222, 230, 236);
@@ -30,10 +30,13 @@ body {
 }
 
 body {
+    width: 100vw;
+    min-height: 100vh;
     font-family: var(--ff-primary);
     background: var(--clr-secondary);
     color: var(--clr-text);
     font-size: 0.8rem;
+    overflow-x: hidden;
 }
 
 ul {

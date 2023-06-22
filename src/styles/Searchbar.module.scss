@@ -3,8 +3,14 @@
     margin: 1rem 0;
 
     @media screen and (min-width: 768px) {
-        width: 300px;
+        max-width: 400px;
         margin: 0;
+    }
+
+    form {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
     }
 }
 

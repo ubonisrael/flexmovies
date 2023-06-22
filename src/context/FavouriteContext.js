@@ -8,7 +8,7 @@ export const FavouriteContext = createContext([]);
 export const useFavContext = () => useContext(FavouriteContext);
 
 export default function FavContext({ children }) {
-  const {user, loading} = useAuth();
+  const {user} = useAuth();
   const [favourites, setFavourites] = useState([]);
 
   useEffect(() => {

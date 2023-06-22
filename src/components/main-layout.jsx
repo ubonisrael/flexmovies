@@ -5,13 +5,12 @@ import { Footer } from "./footer";
 import { Header } from "./header";
 
 export const MainLayout = ({ children }) => {
-
   return (
     <>
         <FavContext>
           <ListContext>
             <Header />
-            {children} 
+            {children}
             <Footer />
           </ListContext>
         </FavContext>

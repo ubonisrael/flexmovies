@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import styles from "@/styles/Header.module.scss";
 import { Navbar } from "./navbar";
 import {AiOutlineMenu} from 'react-icons/ai'
@@ -7,7 +6,9 @@ import {AiOutlineMenu} from 'react-icons/ai'
 export const Header = () => {
   const [nav, setNav] = useState(false)
 
-  const toggleNav = () => setNav(prev => !prev)
+  const toggleNav = () => {
+    setNav(prev => !prev)
+  }
 
   return (
     <>

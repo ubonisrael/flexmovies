@@ -5,7 +5,10 @@ import { auth } from "@/firebase"
 
 const formatUser = (user) => ({
     uid: user.uid,
-    email: user.email
+    name: user.displayName,
+    email: user.email,
+    photo: user.photoURL,
+    verified: user.emailVerified
 })
 
 export default function useFirebaseAuth() {

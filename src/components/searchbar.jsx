@@ -26,6 +26,7 @@ export const SearchBar = () => {
       <form onSubmit={handleSearch}>
         <input
           id="search"
+          name="search"
           className={styles.search}
           type="text"
           placeholder="Search for movies, tv series....."

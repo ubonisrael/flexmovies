@@ -1,20 +1,35 @@
 .login {
-  color: white;
-  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
-  height: calc(100vh - 4.5rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  z-index: 9;
+  backdrop-filter: blur(2px);
+}
 
-  article {
-    width: 90%;
-    height: 60%;
+.loginContainer {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+.formContainer {
+    width: 40vw;
+    min-width: 300px;
+    min-height: 400px;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--clr-primarybg);
+    border: 2px solid var(--clr-secondarybg);
+    border-radius: var(--radius);
 
     h1 {
       text-align: center;
@@ -24,15 +39,13 @@
     form {
       width: 100%;
       max-width: 30rem;
-      height: 30rem;
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
       flex-direction: column;
-      border: 2px solid rgba(183, 200, 201, 0.733);
-      border-radius: var(--radius);
 
-      h3 {
+      h2 {
+        text-transform: uppercase;
         margin: 0.5rem auto 0;
       }
 
@@ -40,29 +53,30 @@
         width: 100%;
         color: red;
         text-align: center;
-        font-family: var(--ff-secondary);
       }
 
       div {
-        width: 80%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        justify-content: center;
-        margin: 0.5rem auto;
+        justify-content: flex-start;
+        margin: 0.5rem 0;
 
         label {
+          width: 100%;
           font-size: 1.2rem;
-          margin: 0.5rem 0;
+          margin: 4px 0;
         }
-
+        
         input {
+          width: 100%;
           height: 2rem;
+          border-radius: 4px;
         }
       }
     }
   }
-}
 
 .login_input {
   width: 100%;
@@ -77,7 +91,8 @@
   display: flex !important;
   align-items: flex-end !important;
   justify-content: center !important;
-  padding-right: 1rem !important;
+  padding-right: 1rem !important;    
+  flex-direction: column;
 
   button {
     width: 5rem;
@@ -114,4 +129,17 @@
 .verify {
   text-align: center;
   padding: 1rem 2rem;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  background: none;
+  font-size: 2rem;
+  color: rgb(212, 17, 17);
+
+  &:hover {
+      color: red;
+  }
 }
