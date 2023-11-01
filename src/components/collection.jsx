@@ -18,16 +18,16 @@ export const Collection = ({
   userlist
 }) => {
 
-  
-  const {data} = useSWR(dataURL, fetcher)
-  
-  if (!data && dataURL ) {
+
+  const { data } = useSWR(dataURL, fetcher)
+
+  if (!data && dataURL) {
     return <CollectionSkeleton />
   }
 
 
   return (
-      <section className={styles.collection_container}>
+    <section className={styles.collection_container}>
       <article className={styles.collection_type}>
         {linkPath ? (
           <Link href={linkPath} className={styles.links}>
@@ -41,12 +41,12 @@ export const Collection = ({
         ) : null}
       </article>
       <section className={styles.collection}>
-        {data ? data.results.map((item) => 
-          <Card key={item.id} item={item} mediatype={mediatype}/>
-        ): null}
-        {userlist ? userlist.map((item) => 
-          <Card key={item.id} item={item} mediatype={mediatype}/>
-        ): null}
+        {data ? data.results.map((item) =>
+          <Card key={item.id} item={item} mediatype={mediatype} />
+        ) : null}
+        {userlist ? userlist.map((item) =>
+          <Card key={item.id} item={item} mediatype={mediatype} />
+        ) : null}
       </section>
     </section>
   );

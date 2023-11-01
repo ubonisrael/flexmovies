@@ -139,3 +139,23 @@ button {
   overflow: hidden;
   white-space: nowrap;
 }
+
+body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  body::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: rgb(249 250 251);
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background: rgb(75 85 99);
+    /* border-radius: 100vh; */
+    /* border: 3px solid #f6f7ed; */
+  }
+
+  body::-webkit-scrollbar-thumb:hover {
+    background: rgb(15 23 42);;
+  }

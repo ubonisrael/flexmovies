@@ -24,15 +24,16 @@ export const SearchBar = () => {
   return (
     <div className={styles.searchcontainer}>
       <form onSubmit={handleSearch}>
+        <label htmlFor="search" className={styles.search}>
         <input
           id="search"
           name="search"
-          className={styles.search}
           type="text"
           placeholder="Search for movies, tv series....."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
+        </label>
         <button id="search-btn" type="submit" className={styles.searchbtn}>
           Search
         </button>

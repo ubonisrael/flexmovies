@@ -11,12 +11,10 @@ export const Header = () => {
   }
 
   return (
-    <>
       <header className={styles.header}>
         <h1 className={styles.title}>flexmovies</h1>
         <button className={styles.menuBtn} onClick={toggleNav}><AiOutlineMenu /><span className="sr-only">open menu</span></button>
         <Navbar nav={nav} toggleNav={toggleNav}/>
       </header>
-    </>
   );
 };

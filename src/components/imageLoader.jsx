@@ -1,13 +1,11 @@
 import Image from "next/image";
 import { useState } from "react";
-import loader from '@/assets/svg-loaders/puff.svg'
+import loader from '@/assets/svg-loaders/grid.svg'
 
 export function ImageLoader({path}) {
 
   const [loading, setLoading] = useState(true);
-  const divStyle = {
-    borderRadius: "16px",
-  };
+
 
   return (
     <>
@@ -19,8 +17,7 @@ export function ImageLoader({path}) {
       )}
       <Image
         src={path}
-        alt=""
-        style={divStyle}
+        alt="movie image"
         fill
         sizes="(max-width: 400px) 100vw,
               (max-width: 300px) 50vw,

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Collection } from "./collection";
 import styles from "@/styles/homepage.module.scss";
+import Image from "next/image";
 
 export const HomePage = ({ page }) => {
   const [checked, setChecked] = useState(false);
@@ -11,6 +12,39 @@ export const HomePage = ({ page }) => {
 
   return (
     <main className={styles.main}>
+      <section className={styles.bg_images}>
+          <Image src={`https://image.tmdb.org/t/p/original/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg`} alt="background image 1" fill
+        sizes="(max-width: 400px) 100vw,
+              (max-width: 300px) 50vw,
+              (max-width: 200px) 33vw"
+              priority
+              className={styles.bg_img}/>
+          <Image src={`https://image.tmdb.org/t/p/original/kuf6dutpsT0vSVehic3EZIqkOBt.jpg`} alt="background image 2" fill
+        sizes="(max-width: 400px) 100vw,
+              (max-width: 300px) 50vw,
+              (max-width: 200px) 33vw"
+              priority
+              className={styles.bg_img}/>
+          <Image src={`https://image.tmdb.org/t/p/original/qNz4l8UgTkD8rlqiKZ556pCJ9iO.jpg`} alt="background image 3" fill
+        sizes="(max-width: 400px) 100vw,
+              (max-width: 300px) 50vw,
+              (max-width: 200px) 33vw"
+              priority
+              className={styles.bg_img}/>
+
+          <Image src={`https://image.tmdb.org/t/p/original/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg`} alt="background image 4" fill
+        sizes="(max-width: 400px) 100vw,
+              (max-width: 300px) 50vw,
+              (max-width: 200px) 33vw"
+              priority
+              className={styles.bg_img}/>
+          <Image src={`https://image.tmdb.org/t/p/original/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg`} alt="background image 5" fill
+        sizes="(max-width: 400px) 100vw,
+              (max-width: 300px) 50vw,
+              (max-width: 200px) 33vw"
+              priority
+              className={styles.bg_img}/>
+      </section>
       {checked ? (
         <Collection
           type={"trending"}

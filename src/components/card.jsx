@@ -55,28 +55,28 @@ export const Card = ({ item, mediatype }) => {
 
   return (
     <article onClick={handleLink} className={styles.card}>
-      <div>
         <div className={styles.imageContainer}>
           <ImageLoader path={imagePath} />
           <div className={styles.overlay_rating}>
             <p>{item.vote_average ? item.vote_average.toFixed(1) : 'N/A'}</p>
           </div>
-          <div className={styles.overlay_icons}>
-            <button onClick={handleFav}>
-              {checkedFave ? <MdFavorite /> : <MdFavoriteBorder />}
-            </button>
-            <button onClick={handleWatchlist}>
-              {checkedWList ? (
-                <MdOutlinePlaylistAddCheck />
-              ) : (
-                <MdOutlinePlaylistAdd />
-              )}
-            </button>
+          <div className={styles.overlay}>
+            <div className={styles.overlay_icons}>
+              <button onClick={handleFav}>
+                {checkedFave ? <MdFavorite /> : <MdFavoriteBorder />}
+              </button>
+              <button onClick={handleWatchlist}>
+                {checkedWList ? (
+                  <MdOutlinePlaylistAddCheck />
+                ) : (
+                  <MdOutlinePlaylistAdd />
+                )}
+              </button>
+            </div>
+            <p className={styles.title}>{item.title ? item.title : item.name}</p>
+            <p>{item.release_date ? item.release_date : item.first_air_date}</p>
           </div>
         </div>
-      </div>
-      <h4 className={styles.title}>{item.title ? item.title : item.name}</h4>
-      <p>{item.release_date ? item.release_date : item.first_air_date}</p>
     </article>
   );
 };
