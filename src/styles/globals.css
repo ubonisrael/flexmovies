@@ -8,7 +8,7 @@
     --light-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
     --max-width: 700px;
     --spacing:0.2rem;
-    --clr-red: red;
+    --clr-red: rgb(173, 56, 56);
     --br-tablet: 768px;
     --br-laptop: 992px;
 }

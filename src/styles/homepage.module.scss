@@ -1,10 +1,12 @@
 .main {
     position: relative;
-    padding-top: 60vh;
     
     @media screen and (min-width: 768px) {
-        padding-top: 75vh;
+      padding-top: 2rem;
         padding-left: 5rem;
+    }
+    @media screen and (min-width: 1024px) {
+      padding-top: 3rem;
     }
 }
 

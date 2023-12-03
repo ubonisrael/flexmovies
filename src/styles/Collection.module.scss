@@ -1,21 +1,24 @@
 .collection_container {
+  padding-left: 0.5rem;
+  padding-top: 1rem;
 
   @media screen and (min-width: 768px) {
-    margin: 1rem 0;
+    padding-left: 0;
+    margin-bottom: 3rem;
+  }
+
+  @media screen and (min-width: 992px) {
+    margin-bottom: 4rem;
   }
 }
 
 .collection {
   padding: 0 0.25rem;
-  margin: 0 0 2rem 1rem;
+  margin: 0 0 2rem 0;
   display: flex;
-  // gap: 0.75rem;
   overflow-x: scroll;
   overflow-y: hidden;
 
-  // @media screen and (min-width: 768px) {
-  //   gap: 1rem;
-  // }
 }
 
 .links {
@@ -43,107 +46,25 @@
   align-items: center;
   justify-content: flex-start;
   padding: 0.5rem;
-  margin-left: 1rem;
+  padding-left: 0;
 
-  h3 {
-    color: var(--clr-secondary);
-    background: rgb(231, 218, 193);
+  h2 {
+    color: rgb(231, 218, 193);
     text-transform: uppercase;
-    padding: 0.5rem;
     border-radius: var(--radius);
-    border: 1px solid rgb(231, 218, 193);
+    border: 1px solid var(--clr-secondary);
+    font-size: 1.25rem;
     
     &:hover {
-      color: var(--clr-secondary);
-      background: var(--clr-primary);
-    }
-  }
-}
-
-.switchButton {
-  background: rgba(255, 255, 255, 0.56);
-  border-radius: var(--radius);
-  overflow: hidden;
-  width: 6rem;
-  text-align: center;
-  font-size: 1rem;
-  color: #155fff;
-  position: relative;
-  padding-right: 3rem;
-  position: relative;
-  margin-left: 1rem;
-
-  &:before {
-    content: "Week";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3;
-    pointer-events: none;
-  }
-
-  &Checkbox {
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    z-index: 2;
-
-    &:checked + .switchButtonLabel:before {
-      transform: translateX(3rem);
-      transition: transform 300ms linear;
+      color:  var(--clr-primary);
     }
 
-    & + .switchButtonLabel {
-      position: relative;
-      padding: 0.2rem 0;
-      display: block;
-      user-select: none;
-      pointer-events: none;
-
-      &:before {
-        content: "";
-        background: #fff;
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        border-radius: var(--radius);
-        transform: translateX(0);
-        transition: transform 300ms;
-      }
-
-      .switchButtonLabelSpan {
-        position: relative;
-      }
+    @media screen and (min-width: 768px) {
+      font-size: 1.75rem;
     }
-  }
-}
-
-@media screen and (min-width: 425px) {
-  .switchButton {
-    width: 8rem;
-    font-size: 1rem;
-    padding-right: 4rem;
-
-    &:before {
-      width: 4rem;
-    }
-
-    &Checkbox {
-      &:checked + .switchButtonLabel:before {
-        transform: translateX(4rem);
-      }
+  
+    @media screen and (min-width: 992px) {
+      font-size: 2.5rem;
     }
   }
 }

@@ -62,10 +62,10 @@ export const Card = ({ item, mediatype }) => {
           </div>
           <div className={styles.overlay}>
             <div className={styles.overlay_icons}>
-              <button onClick={handleFav}>
+              <button aria-label="add to favorites" onClick={handleFav}>
                 {checkedFave ? <MdFavorite /> : <MdFavoriteBorder />}
               </button>
-              <button onClick={handleWatchlist}>
+              <button aria-label="add to watchlist" onClick={handleWatchlist}>
                 {checkedWList ? (
                   <MdOutlinePlaylistAddCheck />
                 ) : (
