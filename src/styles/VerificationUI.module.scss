@@ -1,0 +1,51 @@
+.veri_page {
+  width: 100%;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.confirmation_text {
+  font-size: 1.25rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: 1.75rem;
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 2.25rem;
+  }
+}
+
+.continue_btn {
+    min-width: 5rem;
+    height: 2rem;
+    padding-inline: 0.5rem;
+    border: none;
+    border-radius: 8px;
+    transition: var(--transition);
+    cursor: pointer;
+    background: var(--clr-primary);
+    color: var(--clr-secondary);
+
+    &:hover {
+    background: var(--clr-primarybg);
+      color: var(--clr-primary);
+    }
+
+    @media screen and (min-width: 768px) {
+      min-width: 6rem;
+      height: 2.5rem;
+      font-size: 1.5rem;
+    }
+  }

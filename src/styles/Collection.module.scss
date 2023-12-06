@@ -14,13 +14,13 @@
 }
 
 .collection {
-  width: min-content;
-  position: relative;
+  // position: absolute;
   padding: 0 0.25rem;
   margin: 0 0 2rem 0;
   display: flex;
   transition: transform 0.5s ease-in;
   overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 .links {
@@ -82,7 +82,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 9;
+  z-index: 99;
   font-size: 1.25rem;
   padding: 0.5rem;
   border-radius: 50%;
@@ -106,7 +106,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 9;
+  z-index: 99;
   font-size: 1.25rem;
   padding: 0.5rem;
   border-radius: 50%;

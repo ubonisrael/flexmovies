@@ -15,15 +15,24 @@ export const Collection = ({
   userlist,
 }) => {
   const [x, setX] = useState(0);
+  const [width, setWidth] = useState(null)
   const [showBtns, setShowBtns] = useState(false);
   const { data } = useSWR(dataURL, fetcher);
 
   useEffect(() => {
     if (widthRef.current) {
-      console.log(widthRef.current.offsetWidth, window.innerWidth, x)
-      console.log(widthRef.current.parentElement.offsetWidth);
+      const w = widthRef.current.offsetWidth
+      if (w < 425) setWidth(1500)
+      else if (w < 768) setWidth(2250)
+      else if (w < 1024) setWidth(3000)
+      else setWidth(4000)
     }
+  }, [data])
+
+  useEffect(() => {
+    if (widthRef.current) widthRef.current.scroll(x, 0)
   }, [x])
+
   const widthRef = useRef(null);
 
   if (!data && dataURL) {
@@ -34,16 +43,14 @@ export const Collection = ({
   const handleLeave = () => setShowBtns(false);
 
   const handleLeftScroll = () => {
-    const y = widthRef.current.offsetWidth;
-    const z = 0.5 * widthRef.current.parentElement.offsetWidth
-    if (x - (z / y) * y >= 0) setX((prev) => prev - (z / y) * y);
+    const z = 0.5 * widthRef.current.offsetWidth
+    if (x - (z / width) * width >= 0) setX((prev) => prev - (z / width) * width);
     else setX(0)
   };
 
   const handleRightScroll = () => {
-    const y = widthRef.current.offsetWidth;
-    const z = 0.5 * widthRef.current.parentElement.offsetWidth
-    if (x + ((2 * z) / y) * y < y) setX((prev) => prev + (z / y) * y);
+    const z = 0.5 * widthRef.current.offsetWidth
+    if (x + ((2 * z) / width) * width < width) setX((prev) => prev + (z / width) * width);
   };
 
   return (
@@ -80,15 +87,8 @@ export const Collection = ({
         </>
       )}
       <section
-        ref={widthRef}
+      ref={widthRef}
         className={styles.collection}
-        style={{
-          transform: `translateX(-${
-            widthRef.current && x >= (1 - (widthRef.current.parentElement.offsetWidth / (widthRef.current.offsetWidth))) * widthRef.current.offsetWidth
-              ? (1 - (widthRef.current.parentElement.offsetWidth / (widthRef.current.offsetWidth))) * widthRef.current.offsetWidth
-              : x
-          }px)`,
-        }}
       >
         {data
           ? data.results
