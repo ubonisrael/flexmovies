@@ -5,6 +5,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { toast } from "react-toastify";
+import { actionCodeSettings } from "./actionCodeSettings";
 
 export default async function signUp(email, password, username) {
   let error;
@@ -14,7 +15,7 @@ export default async function signUp(email, password, username) {
     await updateProfile(auth.currentUser, {
       displayName: username,
     });
-    await sendEmailVerification(auth.currentUser);
+    await sendEmailVerification(auth.currentUser, actionCodeSettings);
     toast.success(
       `A confirmation mail has been sent to ${email}. Click on the link to verify your account.`,
       {
