@@ -15,6 +15,7 @@ export const Collection = ({
   userlist,
 }) => {
   const [x, setX] = useState(0);
+  const [showBtns, setShowBtns] = useState(false);
   const { data } = useSWR(dataURL, fetcher);
 
   useEffect(() => {
@@ -28,6 +29,9 @@ export const Collection = ({
   if (!data && dataURL) {
     return <CollectionSkeleton />;
   }
+
+  const handleEnter = () => setShowBtns(true);
+  const handleLeave = () => setShowBtns(false);
 
   const handleLeftScroll = () => {
     const y = widthRef.current.offsetWidth;
@@ -44,6 +48,8 @@ export const Collection = ({
 
   return (
     <section
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
       className={styles.collection_container}
     >
       <article className={styles.collection_type}>
@@ -55,20 +61,24 @@ export const Collection = ({
           <h2>{type}</h2>
         )}
       </article>
-      <button
-        aria-hidden
-        className={styles.carousel_btns_left}
-        onClick={handleLeftScroll}
-      >
-        <FaAnglesLeft />
-      </button>
-      <button
-        aria-hidden
-        className={styles.carousel_btns_right}
-        onClick={handleRightScroll}
-      >
-        <FaAnglesRight />
-      </button>
+      {showBtns && (
+        <>
+          <button
+            aria-hidden
+            className={styles.carousel_btns_left}
+            onClick={handleLeftScroll}
+          >
+            <FaAnglesLeft />
+          </button>
+          <button
+            aria-hidden
+            className={styles.carousel_btns_right}
+            onClick={handleRightScroll}
+          >
+            <FaAnglesRight />
+          </button>
+        </>
+      )}
       <section
         ref={widthRef}
         className={styles.collection}
