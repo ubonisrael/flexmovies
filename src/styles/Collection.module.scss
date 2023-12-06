@@ -1,4 +1,5 @@
 .collection_container {
+  position: relative;
   padding-left: 0.5rem;
   padding-top: 1rem;
 
@@ -13,12 +14,12 @@
 }
 
 .collection {
+  width: min-content;
+  position: relative;
   padding: 0 0.25rem;
   margin: 0 0 2rem 0;
   display: flex;
-  overflow-x: scroll;
-  overflow-y: hidden;
-
+  transition: transform 0.5s ease-in;
 }
 
 .links {
@@ -54,17 +55,65 @@
     border-radius: var(--radius);
     border: 1px solid var(--clr-secondary);
     font-size: 1.25rem;
-    
+
     &:hover {
-      color:  var(--clr-primary);
+      color: var(--clr-primary);
     }
 
     @media screen and (min-width: 768px) {
       font-size: 1.75rem;
     }
-  
+
     @media screen and (min-width: 992px) {
       font-size: 2.5rem;
     }
+  }
+}
+
+.carousel_btns_left {
+  position: absolute;
+  left: 0;
+  top: calc(50% + 1.5rem);
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 99999;
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+
+  &:hover {
+    background: white;
+    color: black;
+  }
+}
+
+.carousel_btns_right {
+  position: absolute;
+  right: 0;
+  top: calc(50% + 1.5rem);
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 99999;
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+
+  &:hover {
+    background: white;
+    color: black;
   }
 }

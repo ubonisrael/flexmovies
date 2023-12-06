@@ -6,8 +6,8 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
     <footer className={styles.footer}>
-      <Link href="https://github.com/ubonisrael">
-        <p>Developed by Ubonisrael Akpanudoh {currentYear}</p>
+      <Link href="https://ubonisrael-akpanudoh.vercel.app" target="_blank">
+        <p>Developed with ❤️ by Ubonisrael Akpanudoh {currentYear}</p>
       </Link>
     </footer>
   );
