@@ -46,8 +46,8 @@ const Login = ({toggle}) => {
           <MdClose />
         </button>
         <article className={styles.formContainer}>
+        <h2 className={styles.title}>Sign in</h2>
           <form noValidate onSubmit={handleLogin}>
-            <h2>Sign in</h2>
             <div>
               <span>{error.password}</span>
               <label htmlFor="email">Email</label>

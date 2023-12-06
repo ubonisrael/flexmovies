@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Collection } from "./collection";
 import styles from "@/styles/homepage.module.scss";
 

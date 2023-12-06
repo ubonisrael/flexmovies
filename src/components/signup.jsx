@@ -76,8 +76,8 @@ const Signup = ({toggle}) => {
           <MdClose />
         </button>
         <article className={styles.formContainer}>
+        <h2 className={styles.title}>Sign up</h2>
           <form noValidate onSubmit={handleSignUp}>
-            <h2>Sign Up</h2>
             <p className={styles.verify}>{alert.verify}</p>
             <div>
               <label htmlFor="username">Username</label>
