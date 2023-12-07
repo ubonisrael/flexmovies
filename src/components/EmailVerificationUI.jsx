@@ -4,9 +4,9 @@ import { handleVerifyEmail } from "@/lib/auth_handle_email_verification";
 import { auth } from "@/firebase";
 import { useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa6";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 
-const EmailVerificationUI = ({ actionCode, continueUrl }) => {
+const EmailVerificationUI = ({ actionCode}) => {
   const [ui, setUi] = useState(null);
 
   const router = useRouter()
@@ -32,7 +32,7 @@ const EmailVerificationUI = ({ actionCode, continueUrl }) => {
             <p className={styles.confirmation_text}>
               Your email has been successfully verified
             </p>
-            <button className={styles.continue_btn}>
+            <button className={styles.continue_btn} onClick={handleClick}>
               continue to home page
             </button>
           </section>
@@ -51,7 +51,7 @@ const EmailVerificationUI = ({ actionCode, continueUrl }) => {
         </Head>
         <main className={styles.veri_page}>
           <section>
-            <p className={styles.confirmation_text} onClick={handleClick}>
+            <p className={styles.confirmation_text}>
               Oops, there was an error, link has expired.
             </p>
             <p>Try verifying your email address again.</p>
