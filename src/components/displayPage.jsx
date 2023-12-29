@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "./card";
 import styles from "@/styles/Displaypage.module.scss";
-import style from "@/styles/homepage.module.scss";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import { Pagination } from "./pagination";
 import { fetcher } from "@/utils/fetch";
-import { Timewindow } from "./timewindow";
+import { Timewindow } from "./timeWindow";
 
 export const DisplayPage = ({ title, pageType, pageCat, dataURL, window }) => {
   const [checked, setChecked] = useState(false);
@@ -31,10 +30,9 @@ export const DisplayPage = ({ title, pageType, pageCat, dataURL, window }) => {
 
   if (!data) return;
 
-  console.log(data);
-
   let pageNumber = Number(data.page);
 
+  // switch to the next page
   const nextPage = () => {
     pageNumber++;
     if (window) {
@@ -53,6 +51,7 @@ export const DisplayPage = ({ title, pageType, pageCat, dataURL, window }) => {
     }
   };
 
+  // switch to the prev page
   const prevPage = () => {
     pageNumber--;
     if (pageNumber < 1) return;

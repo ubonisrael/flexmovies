@@ -3,12 +3,12 @@ import styles from "@/styles/Userpage.module.scss";
 import { useFavContext } from "@/context/FavouriteContext";
 import { useWatchContext } from "@/context/WatchListContext";
 import { Collection } from "./collection";
-import { EmptyList } from "./emptylist";
+import { EmptyList } from "./emptyList";
 import { useAuth } from "@/context/AuthUserContext";
 import { FaUserAlt } from "react-icons/fa";
 import { GoVerified, GoUnverified } from "react-icons/go";
 import Image from "next/image";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { auth, storage } from "@/firebase";
 import { updateProfile } from "firebase/auth";
@@ -20,16 +20,18 @@ export const User = () => {
 
   const { user } = useAuth();
 
-  const router = useRouter()
+  const router = useRouter();
 
   const fav = useFavContext();
 
   const watch = useWatchContext();
 
+  // toggle modal
   const handleToggle = () => {
-    setModal(prev => !prev)
-  }
+    setModal((prev) => !prev);
+  };
 
+  // retrieve user avatar from firebase storage
   const getAvatar = () => {
     const storageRef = ref(storage, `flexmovies/${user.uid}/userimage`);
     getDownloadURL(storageRef)
@@ -40,6 +42,7 @@ export const User = () => {
       });
   };
 
+  // update user's avatar
   const updateAvatar = (e) => {
     const avatarFile = e.target.files[0];
     if (!avatarFile) return;
@@ -67,12 +70,13 @@ export const User = () => {
     );
   };
 
+  // if user is logged in, get user avatar, else push user to home page
   useEffect(() => {
     if (user) getAvatar();
-    if (!user) router.push('/')
+    else router.push("/");
   }, [user]);
 
-  if (!user) return;
+  // if (!user) return;
 
   const divStyle = {
     borderRadius: "50%",
@@ -108,9 +112,9 @@ export const User = () => {
           </p>
         </article>
       </section>
-        <div className={styles.changePwBtn}>
-          <button onClick={handleToggle}>change password</button>
-        </div>
+      <div className={styles.changePwBtn}>
+        <button onClick={handleToggle}>change password</button>
+      </div>
       <section>
         {fav.length > 0 ? (
           <Collection userlist={fav} type={"Favorites"} />
@@ -123,7 +127,9 @@ export const User = () => {
           <EmptyList type="watch list" icon="plus" />
         )}
       </section>
-      {passwordModal ? <PasswordChange email={user.email} toggle={handleToggle} /> : null}
+      {passwordModal ? (
+        <PasswordChange email={user.email} toggle={handleToggle} />
+      ) : null}
     </section>
   );
 };

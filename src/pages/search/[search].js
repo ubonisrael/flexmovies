@@ -1,5 +1,5 @@
 import React from "react";
-import { DisplayPage } from "@/components/displaypage";
+import { DisplayPage } from "@/components/displayPage";
 
 export default function Search({ 
   pageCat,

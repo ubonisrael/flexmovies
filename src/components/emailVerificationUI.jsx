@@ -11,14 +11,18 @@ const EmailVerificationUI = ({ actionCode}) => {
 
   const router = useRouter()
 
+  // send user to home page
   const handleClick = () => router.push('/')
 
+  // verify user's email address when component loads initially
   useEffect(() => {
     handleVerifyEmail(auth, actionCode, setUi);
   }, []);
 
+  // if ui is null, show a loading spinner
   if (!ui) return <FaSpinner style={{fontSize: `4rem`}} />;
 
+  // show ui depending on ui message status
   if (ui && ui == "success") {
     return (
       <>

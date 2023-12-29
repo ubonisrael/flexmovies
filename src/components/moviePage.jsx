@@ -14,9 +14,9 @@ import { useWatchContext } from "@/context/WatchListContext";
 import { List } from "@/lib/addToList";
 import { CheckUser } from "@/lib/checkuser";
 import { useAuth } from "@/context/AuthUserContext";
-import { Placeholder } from "./placeholder";
+import Image from "next/image";
 
-export const Moviepage = ({ item, casts, img, svg }) => {
+export const Moviepage = ({ item, casts }) => {
   const { user } = useAuth;
 
   const fav = useFavContext();
@@ -25,6 +25,7 @@ export const Moviepage = ({ item, casts, img, svg }) => {
   const checkedFave = CheckList(fav, item.id);
   const checkedWList = CheckList(watch, item.id);
 
+  // add item to favorite list
   const handleFav = (e) => {
     e.stopPropagation();
 
@@ -34,6 +35,7 @@ export const Moviepage = ({ item, casts, img, svg }) => {
     }
     CheckUser();
   };
+  // add item to watchlist
   const handleWatchlist = (e) => {
     e.stopPropagation();
 
@@ -45,6 +47,9 @@ export const Moviepage = ({ item, casts, img, svg }) => {
   };
 
   const style = { fontSize: "1.5rem" };
+  const divStyle = {
+    borderRadius: "16px",
+  };
 
   return (
     <main className={sty.main}>
@@ -52,7 +57,16 @@ export const Moviepage = ({ item, casts, img, svg }) => {
       <section className={styles.movie_info}>
         <article>
           <div className={styles.imageContainer}>
-            <Placeholder svg={svg} img={img} blur={4} />
+            <Image
+              src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+              alt={`${item.title ? item.title : item.name} poster`}
+              style={divStyle}
+              fill
+              sizes="(max-width: 400px) 100vw,
+              (max-width: 300px) 50vw,
+              (max-width: 200px) 33vw"
+              priority
+            />
           </div>
           <Link href={item.homepage} className={styles.visit}>
             <div>Visit HomePage</div>

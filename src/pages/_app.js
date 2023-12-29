@@ -1,4 +1,4 @@
-import { MainLayout } from "@/components/main-layout";
+import { MainLayout } from "@/components/mainLayout";
 import { AuthUserProvider } from "@/context/AuthUserContext";
 import "@/styles/globals.css";
 import { ToastContainer } from "react-toastify";

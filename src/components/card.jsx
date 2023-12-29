@@ -16,7 +16,7 @@ import { useRouter } from "next/router";
 import { ImageLoader } from "./imageLoader";
 
 export const Card = ({ item, mediatype }) => {
-  const { user } = useAuth();
+  const { user } = useAuth(); // get the status of the user
 
   const router = useRouter();
 
@@ -26,32 +26,40 @@ export const Card = ({ item, mediatype }) => {
   const checkedFave = CheckList(fav, item.id);
   const checkedWList = CheckList(watch, item.id);
 
-  let linkPath = `/${item.media || item.media_type || mediatype}/${item.id}`;
+  let linkPath = `/${item.media || item.media_type || mediatype}/${item.id}`; // craft the path to the movie or show's page
 
+  // reroute to the item's page
   const handleLink = () => {
     router.push(linkPath);
   };
 
+  // add item to favorite list
   const handleFav = (e) => {
     e.stopPropagation();
 
+    // check if user is true ie logged in
     if (user) {
       List(item, fav, user.uid, "favorites");
       return;
     }
+    // else, inform user that user has to be logged in to perform this action
     CheckUser();
   };
+
+  // add item to watch list
   const handleWatchlist = (e) => {
     e.stopPropagation();
 
+    // check if user is true ie logged in
     if (user) {
       List(item, watch, user.uid, "watchlist");
       return;
     }
+    // else, inform user that user has to be logged in to perform this action
     CheckUser();
   };
 
-  const imagePath = `https://image.tmdb.org/t/p/original/${item.poster_path}`
+  const imagePath = `https://image.tmdb.org/t/p/original/${item.poster_path}` // craft path to url of movie or show's poster
 
   return (
     <article onClick={handleLink} className={styles.card}>

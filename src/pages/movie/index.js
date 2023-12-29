@@ -1,4 +1,4 @@
-import { HomePage } from "@/components/home-page";
+import { HomePage } from "@/components/homePage";
 
 const Movies = () =>  (
   <HomePage page='movie' />

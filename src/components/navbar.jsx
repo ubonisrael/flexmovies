@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "@/styles/Navbar.module.scss";
 import Link from "next/link";
 import LogOut from "@/lib/logout";
-import { SearchBar } from "./searchbar";
+import { SearchBar } from "./searchBar";
 import { RiLogoutCircleRLine, RiLoginCircleLine } from "react-icons/ri";
 import { AiFillHome, AiOutlineClose } from "react-icons/ai";
 import { IoMdTv } from "react-icons/io";
@@ -10,8 +10,8 @@ import { FaUserAlt } from "react-icons/fa";
 import { useAuth } from "@/context/AuthUserContext";
 import { MdMovie } from "react-icons/md";
 import Login from "./login";
-import Signup from "./signup";
-import PasswordReset from "./pwreset";
+import Signup from "./signUp";
+import PasswordReset from "./passwordReset";
 
 export const Navbar = ({ nav, toggleNav }) => {
   const [modal, setModal] = useState(null);

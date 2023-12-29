@@ -1,9 +1,10 @@
-import EmailVerificationUI from "@/components/EmailVerificationUI";
+import EmailVerificationUI from "@/components/emailVerificationUI";
 import ResetPasswordUI from "@/components/resetPasswordUI";
 import { useRouter } from "next/router";
 
 const AuthPage = () => {
   const { query } = useRouter();
+  // Get the mode from the query parameter.
   const mode = query.mode
   // Get the one-time code from the query parameter.
   const actionCode = query.oobCode

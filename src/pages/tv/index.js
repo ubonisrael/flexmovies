@@ -1,4 +1,4 @@
-import { HomePage } from "@/components/home-page";
+import { HomePage } from "@/components/homePage";
 
 const TvShows = () => (
   <HomePage page='tv' />
