@@ -76,7 +76,7 @@ export const User = () => {
     else router.push("/");
   }, [user]);
 
-  // if (!user) return;
+  if (!user) return;
 
   const divStyle = {
     borderRadius: "50%",
