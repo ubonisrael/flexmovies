@@ -1,4 +1,4 @@
-import { DisplayPage } from "@/components/displaypage";
+import { DisplayPage } from "@/components/displayPage";
 
 export default function TrendingTV
   ({
