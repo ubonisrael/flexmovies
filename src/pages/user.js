@@ -1,4 +1,4 @@
-import { User } from "@/components/userpage";
+import { User } from "@/components/userPage";
 import Head from "next/head";
 import React from "react";
 
