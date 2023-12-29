@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/font": "13.1.6",
+    "@next/font": "^13.1.6",
     "@plaiceholder/next": "^2.5.0",
     "@popperjs/core": "^2.11.6",
     "cookie": "^0.5.0",
